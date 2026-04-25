@@ -1,32 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-my-iptv-list 自动聚合脚本
+mytvlist 自动聚合脚本
 
 功能：
 1. 从多个公开 IPTV M3U/TXT 源抓取频道；
-2. 修复原脚本用正则解析 M3U 时容易把 User-Agent 里的逗号误识别为频道名的问题；
-3. 自动分类中央台、卫视、港澳台、各省地方台；
+2. 逐行解析 M3U，避免把 User-Agent 中的逗号误识别为频道名；
+3. 自动分类中央台、卫视、港澳台、地方频道；
 4. 生成 TXT、M3U、IPv4、IPv6、统计文件和 Docker Web 首页；
-5. 支持 OUTPUT_DIR、GH_PROXY、CHECK_STREAMS 等环境变量。
-
-注意：
-- 默认只做“列表级抓取”，不逐个测速。逐个检测会明显变慢，也可能触发上游限流。
-- 如需轻量可用性检测，可在 Actions 手动运行时设置 CHECK_STREAMS=1。
+5. 单个上游失败不会中断整体更新；
+6. 支持 OUTPUT_DIR、GH_PROXY、CHECK_STREAMS 环境变量。
 """
 
 from __future__ import annotations
 
-import concurrent.futures
-import datetime as dt
 import html
 import json
 import os
 import re
 import sys
-import time
-from collections import Counter, defaultdict
-from dataclasses import asdict, dataclass
+from collections import defaultdict
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 from urllib.parse import urlparse
@@ -34,39 +29,218 @@ from urllib.parse import urlparse
 import requests
 
 
-# =========================
-# 基础配置
-# =========================
+REPO_OWNER = "ttbly"
+REPO_NAME = "mytvlist"
+RAW_BASE = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main"
 
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", ".")).resolve()
 GH_PROXY = os.getenv("GH_PROXY", "").strip()
-CHECK_STREAMS = os.getenv("CHECK_STREAMS", "0").strip().lower() in {"1", "true", "yes", "on"}
+CHECK_STREAMS = os.getenv("CHECK_STREAMS", "0").strip() == "1"
+
 REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "30"))
-CHECK_TIMEOUT = int(os.getenv("CHECK_TIMEOUT", "8"))
-MAX_WORKERS = int(os.getenv("MAX_WORKERS", "16"))
-EPG_URL = os.getenv("EPG_URL", "https://live.fanmingming.cn/e.xml").strip()
+STREAM_CHECK_TIMEOUT = int(os.getenv("STREAM_CHECK_TIMEOUT", "8"))
 
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
+        "Chrome/124.0 Safari/537.36"
     ),
     "Accept": "*/*",
-    "Connection": "close",
 }
 
-STREAM_URL_RE = re.compile(r"^(https?|rtmp|rtsp|rtp|udp|p2p|p3p|mitv)://", re.I)
-ATTR_RE = re.compile(r'([\w-]+)="([^"]*)"')
+URL_RE = re.compile(r"^(https?|rtmp|rtsp|udp|rtp)://", re.IGNORECASE)
 
+BAD_KEYWORDS = (
+    "成人",
+    "情色",
+    "福利",
+    "午夜",
+    "限制级",
+    "裸",
+    "porn",
+    "xxx",
+    "sex",
+    "18+",
+)
 
-@dataclass(frozen=True)
-class Source:
-    name: str
-    url: str
-    fmt: str = "auto"          # auto / m3u / txt
-    keep_all: bool = False     # True 表示该源本身已经按地区过滤，可全部保留
-    enabled: bool = True
+KEEP_KEYWORDS = (
+    "cctv",
+    "央视",
+    "中央",
+    "cgtn",
+    "卫视",
+    "凤凰",
+    "翡翠",
+    "无线",
+    "明珠",
+    "tvb",
+    "viutv",
+    "now",
+    "港台",
+    "香港",
+    "澳门",
+    "澳视",
+    "台湾",
+    "台视",
+    "中视",
+    "华视",
+    "民视",
+    "公视",
+    "东森",
+    "三立",
+    "中天",
+    "年代",
+    "非凡",
+    "湖南",
+    "浙江",
+    "江苏",
+    "东方",
+    "上海",
+    "北京",
+    "广东",
+    "深圳",
+    "山东",
+    "四川",
+    "重庆",
+    "天津",
+    "安徽",
+    "河南",
+    "河北",
+    "湖北",
+    "江西",
+    "辽宁",
+    "吉林",
+    "黑龙江",
+    "广西",
+    "贵州",
+    "云南",
+    "海南",
+    "新疆",
+    "西藏",
+    "内蒙古",
+    "宁夏",
+    "甘肃",
+    "青海",
+    "山西",
+    "陕西",
+    "福建",
+    "厦门",
+    "大湾区",
+)
+
+GROUP_RULES = [
+    ("中央台", ("cctv", "央视", "中央", "cgtn")),
+    ("卫视", ("卫视", "湖南", "浙江", "江苏", "东方卫视", "北京卫视", "广东卫视")),
+    ("港澳频道", ("香港", "澳门", "凤凰", "翡翠", "无线", "明珠", "tvb", "viutv", "now", "澳视", "港台")),
+    ("台湾频道", ("台湾", "台视", "中视", "华视", "民视", "公视", "东森", "三立", "中天", "年代", "非凡")),
+    (
+        "地方频道",
+        (
+            "北京",
+            "上海",
+            "天津",
+            "重庆",
+            "河北",
+            "河南",
+            "山东",
+            "山西",
+            "陕西",
+            "安徽",
+            "湖北",
+            "湖南",
+            "江西",
+            "江苏",
+            "浙江",
+            "福建",
+            "广东",
+            "广西",
+            "四川",
+            "贵州",
+            "云南",
+            "海南",
+            "辽宁",
+            "吉林",
+            "黑龙江",
+            "内蒙古",
+            "宁夏",
+            "甘肃",
+            "青海",
+            "新疆",
+            "西藏",
+            "深圳",
+            "厦门",
+        ),
+    ),
+]
+
+SOURCES = [
+    {
+        "name": "iptv-org-cn",
+        "url": "https://iptv-org.github.io/iptv/countries/cn.m3u",
+        "format": "m3u",
+        "trusted": True,
+    },
+    {
+        "name": "iptv-org-hk",
+        "url": "https://iptv-org.github.io/iptv/countries/hk.m3u",
+        "format": "m3u",
+        "trusted": True,
+    },
+    {
+        "name": "iptv-org-mo",
+        "url": "https://iptv-org.github.io/iptv/countries/mo.m3u",
+        "format": "m3u",
+        "trusted": True,
+    },
+    {
+        "name": "iptv-org-tw",
+        "url": "https://iptv-org.github.io/iptv/countries/tw.m3u",
+        "format": "m3u",
+        "trusted": True,
+    },
+    {
+        "name": "fanmingming-ipv6",
+        "url": "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
+        "format": "m3u",
+        "trusted": True,
+    },
+    {
+        "name": "YanG-1989-Gather",
+        "url": "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u",
+        "format": "m3u",
+        "trusted": False,
+        "allow_proxy": True,
+    },
+    {
+        "name": "hujingguang-ChinaIPTV",
+        "url": "https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/cnTV_AutoUpdate.m3u8",
+        "format": "m3u",
+        "trusted": False,
+        "allow_proxy": True,
+    },
+    {
+        "name": "frankwuzp-iptv-cn",
+        "url": "https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/iptv.m3u",
+        "format": "m3u",
+        "trusted": False,
+        "allow_proxy": True,
+    },
+    {
+        "name": "Guovin-iptv-api-result-m3u",
+        "url": "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+        "format": "m3u",
+        "trusted": False,
+        "allow_proxy": True,
+    },
+    {
+        "name": "Guovin-iptv-api-result-txt",
+        "url": "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.txt",
+        "format": "txt",
+        "trusted": False,
+        "allow_proxy": True,
+    },
+]
 
 
 @dataclass
@@ -75,664 +249,424 @@ class Channel:
     url: str
     group: str
     source: str
-    logo: str = ""
-    tvg_id: str = ""
-    tvg_name: str = ""
-    is_ipv6: bool = False
-    checked: bool | None = None
+    ipv6: bool = False
+    ok: bool | None = None
 
 
-# 默认源说明：
-# - iptv-org：公开 IPTV 频道库，按国家/地区拆分；
-# - fanmingming/live：中文电视/广播图标与相关 M3U 工具源；
-# - YanG-1989/m3u：中文圈常用聚合源，Gather.m3u；
-# - Guovin/iptv-api：自动采集、筛选、测速后生成的结果源；
-# - hujingguang/ChinaIPTV：README 明确说明 cnTV_AutoUpdate.m3u8 会定时更新；
-# - frankwuzp/iptv-cn：偏 IPv4，适合补充国内通用/移动源。
-SOURCES: list[Source] = [
-    Source("IPTV_ORG_CN", "https://iptv-org.github.io/iptv/countries/cn.m3u", keep_all=True),
-    Source("IPTV_ORG_HK", "https://iptv-org.github.io/iptv/countries/hk.m3u", keep_all=True),
-    Source("IPTV_ORG_MO", "https://iptv-org.github.io/iptv/countries/mo.m3u", keep_all=True),
-    Source("IPTV_ORG_TW", "https://iptv-org.github.io/iptv/countries/tw.m3u", keep_all=True),
-
-    Source("FANMINGMING_IPV6", "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"),
-    Source("YANG_GATHER", "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u"),
-    Source("GUOVIN_RESULT", "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"),
-
-    Source("CHINAIPTV_AUTO", "https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/cnTV_AutoUpdate.m3u8"),
-    Source("FRANKWUZP_IPV4_CN", "https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/tv-ipv4-cn.m3u"),
-    Source("FRANKWUZP_IPV4_CMCC", "https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/tv-ipv4-cmcc.m3u"),
-]
+def log(message: str) -> None:
+    print(message, flush=True)
 
 
-# =========================
-# 频道筛选与分类
-# =========================
-
-DROP_KEYWORDS = {
-    "成人", "午夜", "情色", "福利", "18+", "XXX", "PLAYBOY", "裸", "限制级",
-}
-
-CENTRAL_KEYWORDS = {
-    "CCTV", "CGTN", "央视", "中央", "中国教育", "CETV", "CHC",
-}
-
-HK_MO_KEYWORDS = {
-    "香港", "港澳", "澳门", "澳門", "HK", "HONG KONG", "MACAU", "MACAO",
-    "TVB", "翡翠", "明珠", "J2", "無綫", "无线", "鳳凰", "凤凰",
-    "VIUTV", "VIU", "HOY", "RTHK", "港台", "澳视", "澳視", "莲花", "蓮花",
-}
-
-TW_KEYWORDS = {
-    "台湾", "台灣", "臺灣", "TW", "TAIWAN",
-    "台视", "台視", "中视", "中視", "华视", "華視", "民视", "民視",
-    "公视", "公視", "三立", "东森", "東森", "中天", "TVBS",
-    "纬来", "緯來", "非凡", "年代", "壹新闻", "壹新聞", "八大",
-    "寰宇", "镜新闻", "鏡新聞", "大爱", "大愛",
-}
-
-PROVINCES = [
-    "北京", "天津", "上海", "重庆",
-    "河北", "山西", "辽宁", "吉林", "黑龙江",
-    "江苏", "浙江", "安徽", "福建", "江西", "山东",
-    "河南", "湖北", "湖南", "广东", "海南",
-    "四川", "贵州", "云南", "陕西", "甘肃", "青海",
-    "内蒙古", "广西", "西藏", "宁夏", "新疆",
-]
-
-# 一些不一定包含省名/卫视字样，但通常属于中文频道的关键词
-GENERAL_CN_KEYWORDS = {
-    "卫视", "衛視", "地方", "新闻", "新聞", "综合", "综艺", "体育", "少儿", "少兒",
-    "影视", "电影", "剧场", "电视剧", "财经", "纪录", "纪实", "生活", "都市",
-    "法治", "科教", "公共", "农业", "农林", "购物", "卡通", "动漫", "音乐",
-    "梨园", "戏曲", "教育", "高清", "4K", "8K", "珠江", "大湾区", "金鹰", "嘉佳",
-}
+def maybe_proxy(url: str, allow_proxy: bool = False) -> str:
+    if not GH_PROXY or not allow_proxy:
+        return url
+    return GH_PROXY.rstrip("/") + "/" + url
 
 
-def normalize_text(value: str) -> str:
-    return re.sub(r"\s+", " ", value or "").strip()
+def fetch_text(url: str) -> str:
+    response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    if not response.encoding or response.encoding.lower() == "iso-8859-1":
+        response.encoding = response.apparent_encoding or "utf-8"
+    return response.text
 
 
-def contains_any(text: str, keywords: Iterable[str]) -> bool:
-    upper = text.upper()
-    return any(k.upper() in upper for k in keywords)
-
-
-def is_unwanted_channel(name: str, group: str = "") -> bool:
-    text = f"{name} {group}".upper()
-    return any(k.upper() in text for k in DROP_KEYWORDS)
-
-
-def should_keep_channel(name: str, group: str = "", keep_all: bool = False) -> bool:
-    """只保留与大陆、港澳台、中文电视相关的频道。"""
-    if not name:
-        return False
-
-    if is_unwanted_channel(name, group):
-        return False
-
-    if keep_all:
-        return True
-
-    text = f"{name} {group}"
-
-    if contains_any(text, CENTRAL_KEYWORDS):
-        return True
-    if contains_any(text, HK_MO_KEYWORDS):
-        return True
-    if contains_any(text, TW_KEYWORDS):
-        return True
-    if contains_any(text, PROVINCES):
-        return True
-    if contains_any(text, GENERAL_CN_KEYWORDS):
-        return True
-
-    return False
-
-
-def get_group(name: str, source_group: str = "") -> str:
-    """根据频道名和上游分组自动归类。"""
-    text = f"{name} {source_group}"
-
-    if contains_any(text, CENTRAL_KEYWORDS):
-        return "中央台"
-
-    if contains_any(text, HK_MO_KEYWORDS):
-        return "港澳频道"
-
-    if contains_any(text, TW_KEYWORDS):
-        return "台湾频道"
-
-    if "卫视" in text or "衛視" in text:
-        return "卫视"
-
-    for province in PROVINCES:
-        if province in text:
-            return f"{province}频道"
-
-    return "地方及其他"
-
-
-GROUP_ORDER = {
-    "中央台": 0,
-    "卫视": 1,
-    "港澳频道": 2,
-    "台湾频道": 3,
-}
-for idx, province in enumerate(PROVINCES, start=10):
-    GROUP_ORDER[f"{province}频道"] = idx
-GROUP_ORDER["地方及其他"] = 99
-
-
-# =========================
-# URL / M3U / TXT 解析
-# =========================
-
-def is_stream_url(line: str) -> bool:
-    return bool(STREAM_URL_RE.match(line.strip()))
-
-
-def clean_url(value: str) -> str:
-    url = normalize_text(value)
-    url = url.replace("\\", "")
-
-    # 去掉明显的行内注释；保留 URL 内部的 #、?、& 等参数。
-    if " " in url:
-        url = url.split(" ", 1)[0].strip()
-
-    return url
-
-
-def is_ipv6_url(url: str) -> bool:
-    # 常见 IPv6 URL 形态：http://[2409:...]/xxx
-    if "[" in url and "]" in url:
-        return True
-
-    try:
-        host = urlparse(url).hostname or ""
-    except ValueError:
-        return False
-
-    return ":" in host
-
-
-def parse_extinf_attrs(line: str) -> dict[str, str]:
-    return {k.lower(): v.strip() for k, v in ATTR_RE.findall(line)}
-
-
-def parse_extinf_name(line: str, attrs: dict[str, str]) -> str:
-    """
-    提取 #EXTINF 行最后的频道名。
-    不能简单 split(',')，因为 tvg-logo、User-Agent 等属性里也可能带逗号。
-    """
+def comma_after_extinf(line: str) -> int:
+    """返回 EXTINF 行中不在引号内的最后一个逗号位置。"""
     in_quote = False
+    last = -1
     for i, ch in enumerate(line):
         if ch == '"':
             in_quote = not in_quote
         elif ch == "," and not in_quote:
-            return normalize_text(line[i + 1:])
+            last = i
+    return last
 
-    return normalize_text(attrs.get("tvg-name") or attrs.get("tvg-id") or "")
+
+def extinf_name(line: str) -> str:
+    idx = comma_after_extinf(line)
+    if idx >= 0:
+        return clean_name(line[idx + 1 :])
+    return ""
 
 
-def parse_m3u(text: str, source: Source) -> list[Channel]:
+def extinf_group(line: str) -> str:
+    match = re.search(r'group-title="([^"]+)"', line, re.IGNORECASE)
+    if match:
+        return clean_name(match.group(1))
+    return ""
+
+
+def clean_name(name: str) -> str:
+    name = html.unescape(name or "")
+    name = name.strip()
+    name = re.sub(r"\s+", " ", name)
+    name = re.sub(r"\[(?:Geo-blocked|Not 24/7|Offline|Timeout)\]", "", name, flags=re.I)
+    name = re.sub(r"\s+", " ", name).strip()
+    return name
+
+
+def is_bad_name(name: str) -> bool:
+    lower = name.lower()
+    return any(k.lower() in lower for k in BAD_KEYWORDS)
+
+
+def is_useful_channel(name: str, trusted_source: bool = False) -> bool:
+    if not name or is_bad_name(name):
+        return False
+    if trusted_source:
+        return True
+    lower = name.lower()
+    return any(k.lower() in lower for k in KEEP_KEYWORDS)
+
+
+def is_ipv6_url(url: str) -> bool:
+    parsed = urlparse(url)
+    host = parsed.hostname or ""
+    return ":" in host
+
+
+def get_group(name: str, fallback: str = "") -> str:
+    lower = name.lower()
+    for group, keys in GROUP_RULES:
+        if any(k.lower() in lower for k in keys):
+            return group
+    if fallback:
+        return fallback
+    return "地方及其他"
+
+
+def parse_m3u(text: str, source_name: str, trusted_source: bool = False) -> list[Channel]:
     channels: list[Channel] = []
-    pending: dict[str, str] | None = None
+    pending_name = ""
+    pending_group = ""
 
-    for raw_line in text.splitlines():
-        line = raw_line.strip().lstrip("\ufeff")
+    for raw in text.splitlines():
+        line = raw.strip()
         if not line:
             continue
 
-        if line.startswith("#EXTM3U"):
-            continue
-
         if line.startswith("#EXTINF"):
-            attrs = parse_extinf_attrs(line)
-            pending = {
-                "name": parse_extinf_name(line, attrs),
-                "group": attrs.get("group-title", ""),
-                "logo": attrs.get("tvg-logo", ""),
-                "tvg_id": attrs.get("tvg-id", ""),
-                "tvg_name": attrs.get("tvg-name", ""),
-            }
+            pending_name = extinf_name(line)
+            pending_group = extinf_group(line)
             continue
 
-        if line.startswith("#EXTGRP:"):
-            group = normalize_text(line.split(":", 1)[1])
-            if pending is not None:
-                pending["group"] = group
-            continue
-
-        # 播放参数行跳过。它们不能被当成 URL 或频道名。
+        # 这些行是播放参数，不是 URL；为了兼容多数播放器，这里不写入输出。
         if line.startswith("#"):
             continue
 
-        if pending and is_stream_url(line):
-            name = pending.get("name") or pending.get("tvg_name") or pending.get("tvg_id")
-            source_group = pending.get("group", "")
-            url = clean_url(line)
+        if pending_name and URL_RE.match(line):
+            name = clean_name(pending_name)
+            url = line.strip()
 
-            if should_keep_channel(name, source_group, keep_all=source.keep_all):
+            if is_useful_channel(name, trusted_source=trusted_source):
+                group = get_group(name, pending_group)
                 channels.append(
                     Channel(
                         name=name,
                         url=url,
-                        group=get_group(name, source_group),
-                        source=source.name,
-                        logo=pending.get("logo", ""),
-                        tvg_id=pending.get("tvg_id", ""),
-                        tvg_name=pending.get("tvg_name", ""),
-                        is_ipv6=is_ipv6_url(url),
+                        group=group,
+                        source=source_name,
+                        ipv6=is_ipv6_url(url),
                     )
                 )
 
-            pending = None
+            pending_name = ""
+            pending_group = ""
 
     return channels
 
 
-def parse_txt(text: str, source: Source) -> list[Channel]:
+def parse_txt(text: str, source_name: str, trusted_source: bool = False) -> list[Channel]:
     channels: list[Channel] = []
     current_group = ""
 
-    for raw_line in text.splitlines():
-        line = raw_line.strip().lstrip("\ufeff")
+    for raw in text.splitlines():
+        line = raw.strip()
         if not line or line.startswith("#"):
             continue
 
-        if ",#genre#" in line:
-            current_group = normalize_text(line.split(",", 1)[0])
+        if line.endswith(",#genre#"):
+            current_group = clean_name(line.split(",", 1)[0])
             continue
 
         if "," not in line:
             continue
 
         name, url = line.split(",", 1)
-        name = normalize_text(name)
-        url = clean_url(url)
+        name = clean_name(name)
+        url = url.strip()
 
-        if not is_stream_url(url):
+        if not URL_RE.match(url):
+            continue
+        if not is_useful_channel(name, trusted_source=trusted_source):
             continue
 
-        if should_keep_channel(name, current_group, keep_all=source.keep_all):
-            channels.append(
-                Channel(
-                    name=name,
-                    url=url,
-                    group=get_group(name, current_group),
-                    source=source.name,
-                    is_ipv6=is_ipv6_url(url),
-                )
+        channels.append(
+            Channel(
+                name=name,
+                url=url,
+                group=get_group(name, current_group),
+                source=source_name,
+                ipv6=is_ipv6_url(url),
             )
+        )
 
     return channels
 
 
-def parse_playlist(text: str, source: Source) -> list[Channel]:
-    if source.fmt == "txt":
-        return parse_txt(text, source)
-    if source.fmt == "m3u":
-        return parse_m3u(text, source)
-
-    if "#EXTINF" in text or text.lstrip().startswith("#EXTM3U"):
-        return parse_m3u(text, source)
-
-    return parse_txt(text, source)
-
-
-# =========================
-# 抓取、去重、可选检测
-# =========================
-
-def proxied_url(url: str) -> str:
-    if not GH_PROXY:
-        return url
-    return GH_PROXY.rstrip("/") + "/" + url
-
-
-def candidate_urls(url: str) -> list[str]:
-    candidates = [url]
-
-    # 只给 GitHub raw 增加代理候选，避免误代理普通资源站。
-    if GH_PROXY and "raw.githubusercontent.com" in url:
-        purl = proxied_url(url)
-        if purl not in candidates:
-            candidates.append(purl)
-
-    return candidates
-
-
-def fetch_text(session: requests.Session, source: Source) -> str:
-    errors: list[str] = []
-
-    for url in candidate_urls(source.url):
-        for attempt in range(1, 4):
-            try:
-                response = session.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
-                if response.status_code == 200 and response.text.strip():
-                    response.encoding = response.apparent_encoding or "utf-8"
-                    return response.text
-
-                errors.append(f"{url} HTTP {response.status_code}")
-            except Exception as exc:  # noqa: BLE001
-                errors.append(f"{url} attempt {attempt}: {exc}")
-
-            time.sleep(1.2 * attempt)
-
-    raise RuntimeError("; ".join(errors[-5:]))
-
-
-def check_url_alive(url: str) -> bool:
-    if not url.lower().startswith(("http://", "https://")):
-        # udp/rtmp/rtsp 等不适合用 requests 检测，默认保留。
-        return True
-
+def check_url(url: str) -> bool:
     try:
-        with requests.get(url, headers=HEADERS, timeout=CHECK_TIMEOUT, stream=True, allow_redirects=True) as response:
-            if response.status_code >= 400:
-                return False
-
-            # 只读很小一段，避免完整下载。
-            for chunk in response.iter_content(chunk_size=1024):
-                return bool(chunk) or response.status_code < 400
-
-            return response.status_code < 400
+        # 轻量检测：只确认服务器能返回响应，不承诺一定可播放。
+        response = requests.get(url, headers=HEADERS, timeout=STREAM_CHECK_TIMEOUT, stream=True)
+        return response.status_code < 400
     except Exception:
         return False
 
 
 def dedupe_channels(channels: Iterable[Channel]) -> list[Channel]:
-    """按 URL 去重，来源顺序靠前的保留。"""
-    seen_urls: set[str] = set()
+    seen_url: set[str] = set()
     result: list[Channel] = []
 
     for channel in channels:
         key = channel.url.strip()
-        if not key or key in seen_urls:
+        if not key or key in seen_url:
             continue
-
-        seen_urls.add(key)
+        seen_url.add(key)
         result.append(channel)
 
     return result
 
 
-def sort_channels(channels: Iterable[Channel]) -> list[Channel]:
-    return sorted(
-        channels,
-        key=lambda c: (
-            GROUP_ORDER.get(c.group, 80),
-            c.group,
-            c.name.upper(),
-            c.source,
-            c.url,
-        ),
-    )
+def safe_m3u_value(value: str) -> str:
+    return value.replace('"', "'").strip()
 
 
-def collect_channels() -> tuple[list[Channel], dict[str, dict[str, int | str]]]:
-    session = requests.Session()
-    collected: list[Channel] = []
-    source_stats: dict[str, dict[str, int | str]] = {}
+def write_txt(path: Path, channels: list[Channel]) -> None:
+    grouped: dict[str, list[Channel]] = defaultdict(list)
+    for channel in channels:
+        grouped[channel.group].append(channel)
 
-    for source in SOURCES:
-        if not source.enabled:
-            continue
-
-        print(f"同步源：{source.name} -> {source.url}")
-
-        try:
-            text = fetch_text(session, source)
-            parsed = parse_playlist(text, source)
-            collected.extend(parsed)
-            source_stats[source.name] = {
-                "status": "ok",
-                "count": len(parsed),
-                "url": source.url,
-            }
-            print(f"  成功：解析到 {len(parsed)} 个频道")
-        except Exception as exc:  # noqa: BLE001
-            source_stats[source.name] = {
-                "status": f"failed: {exc}",
-                "count": 0,
-                "url": source.url,
-            }
-            print(f"  跳过：{source.name} 抓取或解析失败：{exc}", file=sys.stderr)
-
-    channels = sort_channels(dedupe_channels(collected))
-
-    if CHECK_STREAMS and channels:
-        print(f"开始轻量检测 {len(channels)} 个频道链接，可能需要较长时间...")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            future_map = {executor.submit(check_url_alive, c.url): c for c in channels}
-            for future in concurrent.futures.as_completed(future_map):
-                channel = future_map[future]
-                try:
-                    channel.checked = bool(future.result())
-                except Exception:
-                    channel.checked = False
-
-        before = len(channels)
-        channels = [c for c in channels if c.checked is not False]
-        print(f"检测完成：保留 {len(channels)} / {before} 个频道")
-
-    return channels, source_stats
+    with path.open("w", encoding="utf-8", newline="\n") as f:
+        for group in sorted(grouped.keys()):
+            f.write(f"{group},#genre#\n")
+            for channel in grouped[group]:
+                f.write(f"{channel.name},{channel.url}\n")
+            f.write("\n")
 
 
-# =========================
-# 输出
-# =========================
-
-def ensure_output_dir() -> None:
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-
-def atomic_write(path: Path, content: str) -> None:
-    tmp_path = path.with_suffix(path.suffix + ".tmp")
-    tmp_path.write_text(content, encoding="utf-8", newline="\n")
-    tmp_path.replace(path)
+def write_m3u(path: Path, channels: list[Channel]) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write("#EXTM3U\n")
+        for channel in channels:
+            name = safe_m3u_value(channel.name)
+            group = safe_m3u_value(channel.group)
+            f.write(f'#EXTINF:-1 tvg-name="{name}" group-title="{group}",{name}\n')
+            f.write(f"{channel.url}\n")
 
 
-def render_txt(channels: Iterable[Channel]) -> str:
-    lines: list[str] = []
-    current_group = None
+def write_stats(path: Path, channels: list[Channel], source_status: list[dict]) -> dict:
+    groups = defaultdict(int)
+    sources = defaultdict(int)
 
     for channel in channels:
-        if channel.group != current_group:
-            current_group = channel.group
-            lines.append(f"{current_group},#genre#")
+        groups[channel.group] += 1
+        sources[channel.source] += 1
 
-        tag = " (IPv6)" if channel.is_ipv6 else ""
-        lines.append(f"{channel.name}{tag},{channel.url}")
+    stats = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "repo": f"{REPO_OWNER}/{REPO_NAME}",
+        "total": len(channels),
+        "ipv4_or_non_ipv6": sum(1 for c in channels if not c.ipv6),
+        "ipv6": sum(1 for c in channels if c.ipv6),
+        "check_streams": CHECK_STREAMS,
+        "groups": dict(sorted(groups.items())),
+        "sources": dict(sorted(sources.items())),
+        "source_status": source_status,
+    }
 
-    return "\n".join(lines) + "\n"
-
-
-def xml_escape(value: str) -> str:
-    return html.escape(value or "", quote=True)
-
-
-def render_m3u(channels: Iterable[Channel]) -> str:
-    header = "#EXTM3U"
-    if EPG_URL:
-        header += f' x-tvg-url="{xml_escape(EPG_URL)}"'
-
-    lines = [header]
-
-    for channel in channels:
-        tag = " (IPv6)" if channel.is_ipv6 else ""
-        attrs = [
-            f'group-title="{xml_escape(channel.group)}"',
-            f'tvg-name="{xml_escape(channel.tvg_name or channel.name)}"',
-        ]
-
-        if channel.tvg_id:
-            attrs.append(f'tvg-id="{xml_escape(channel.tvg_id)}"')
-        if channel.logo:
-            attrs.append(f'tvg-logo="{xml_escape(channel.logo)}"')
-
-        lines.append(f'#EXTINF:-1 {" ".join(attrs)},{channel.name}{tag}')
-        lines.append(channel.url)
-
-    return "\n".join(lines) + "\n"
+    path.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return stats
 
 
-def render_index(generated_at: str, channels: list[Channel]) -> str:
-    group_counter = Counter(c.group for c in channels)
-    rows = "\n".join(
-        f"<tr><td>{html.escape(group)}</td><td>{count}</td></tr>"
-        for group, count in group_counter.most_common()
+def write_status(path: Path, stats: dict) -> None:
+    source_lines = []
+    for item in stats["source_status"]:
+        status = "✅" if item.get("ok") else "⚠️"
+        count = item.get("count", 0)
+        name = item.get("name", "")
+        error = item.get("error", "")
+        if error:
+            source_lines.append(f"| {status} | `{name}` | {count} | `{error}` |")
+        else:
+            source_lines.append(f"| {status} | `{name}` | {count} |  |")
+
+    content = f"""# IPTV 更新状态
+
+生成时间：`{stats["generated_at"]}`
+
+仓库：`{stats["repo"]}`
+
+## 统计
+
+| 项目 | 数量 |
+|---|---:|
+| 全部频道源 | {stats["total"]} |
+| IPv4/非 IPv6 | {stats["ipv4_or_non_ipv6"]} |
+| IPv6 | {stats["ipv6"]} |
+
+## 订阅地址
+
+| 文件 | 说明 |
+|---|---|
+| [`cn_tw.m3u`]({RAW_BASE}/cn_tw.m3u) | 全量 M3U |
+| [`cn_tw.txt`]({RAW_BASE}/cn_tw.txt) | 全量 TXT |
+| [`tv_all.txt`]({RAW_BASE}/tv_all.txt) | 全量 TXT，兼容旧文件名 |
+| [`cn_tw_v4.m3u`]({RAW_BASE}/cn_tw_v4.m3u) | IPv4/非 IPv6 M3U |
+| [`tv_v4.txt`]({RAW_BASE}/tv_v4.txt) | IPv4/非 IPv6 TXT |
+| [`cn_tw_v6.m3u`]({RAW_BASE}/cn_tw_v6.m3u) | IPv6 M3U |
+| [`tv_v6.txt`]({RAW_BASE}/tv_v6.txt) | IPv6 TXT |
+
+## 上游源状态
+
+| 状态 | 来源 | 解析数量 | 错误 |
+|---|---|---:|---|
+{chr(10).join(source_lines)}
+
+## 分组统计
+
+| 分组 | 数量 |
+|---|---:|
+"""
+    for group, count in stats["groups"].items():
+        content += f"| {group} | {count} |\n"
+
+    path.write_text(content, encoding="utf-8")
+
+
+def write_index(path: Path, stats: dict) -> None:
+    files = [
+        ("cn_tw.m3u", "全量 M3U，普通播放器优先使用"),
+        ("cn_tw.txt", "全量 TXT，TVBox/DIYP 优先使用"),
+        ("tv_all.txt", "全量 TXT，兼容旧文件名"),
+        ("cn_tw_v4.m3u", "IPv4/非 IPv6 M3U"),
+        ("tv_v4.txt", "IPv4/非 IPv6 TXT"),
+        ("cn_tw_v6.m3u", "IPv6 M3U"),
+        ("tv_v6.txt", "IPv6 TXT"),
+        ("status.md", "更新状态"),
+        ("stats.json", "统计信息"),
+    ]
+
+    links = "\n".join(
+        f'<li><a href="./{html.escape(filename)}">{html.escape(filename)}</a> - {html.escape(desc)}</li>'
+        for filename, desc in files
     )
 
-    return f"""<!doctype html>
+    content = f"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>my-iptv-list</title>
+  <title>mytvlist</title>
   <style>
-    body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 2rem; line-height: 1.65; }}
-    code {{ background: #f4f4f4; padding: .15rem .35rem; border-radius: .25rem; }}
-    table {{ border-collapse: collapse; margin-top: 1rem; }}
-    th, td {{ border: 1px solid #ddd; padding: .45rem .75rem; }}
+    body {{
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }}
+    code {{
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }}
+    li {{ margin: 8px 0; }}
   </style>
 </head>
 <body>
-  <h1>my-iptv-list</h1>
-  <p>更新时间：<code>{html.escape(generated_at)}</code></p>
-  <p>频道数量：<strong>{len(channels)}</strong></p>
-
-  <h2>订阅文件</h2>
+  <h1>mytvlist</h1>
+  <p>自动聚合 IPTV 订阅文件。</p>
+  <p>生成时间：<code>{html.escape(stats["generated_at"])}</code></p>
+  <p>频道源数量：<code>{stats["total"]}</code>；IPv4/非 IPv6：<code>{stats["ipv4_or_non_ipv6"]}</code>；IPv6：<code>{stats["ipv6"]}</code></p>
+  <h2>文件</h2>
   <ul>
-    <li><a href="cn_tw.m3u">cn_tw.m3u</a></li>
-    <li><a href="cn_tw.txt">cn_tw.txt</a></li>
-    <li><a href="tv_all.txt">tv_all.txt</a></li>
-    <li><a href="tv_v4.txt">tv_v4.txt</a></li>
-    <li><a href="tv_v6.txt">tv_v6.txt</a></li>
-    <li><a href="stats.json">stats.json</a></li>
-    <li><a href="status.md">status.md</a></li>
+    {links}
   </ul>
-
-  <h2>分组统计</h2>
-  <table>
-    <thead><tr><th>分组</th><th>频道数</th></tr></thead>
-    <tbody>
-      {rows}
-    </tbody>
-  </table>
-
-  <p>说明：本项目仅聚合公开网络来源，不托管、不缓存任何视频内容。</p>
+  <h2>建议</h2>
+  <p>普通 IPTV 播放器优先使用 <code>cn_tw.m3u</code>，TVBox/DIYP 优先使用 <code>cn_tw.txt</code>。</p>
+  <p>本项目不托管、不缓存、不转发任何视频内容，仅整理公开网络来源中的文本链接。</p>
 </body>
 </html>
 """
+    path.write_text(content, encoding="utf-8")
 
 
-def render_status(generated_at: str, channels: list[Channel], source_stats: dict[str, dict[str, int | str]]) -> str:
-    group_counter = Counter(c.group for c in channels)
-    source_counter = Counter(c.source for c in channels)
-
-    lines = [
-        "# IPTV 更新状态",
-        "",
-        f"- 更新时间：`{generated_at}`",
-        f"- 频道总数：`{len(channels)}`",
-        f"- IPv4 数量：`{sum(1 for c in channels if not c.is_ipv6)}`",
-        f"- IPv6 数量：`{sum(1 for c in channels if c.is_ipv6)}`",
-        f"- 是否启用链接检测：`{CHECK_STREAMS}`",
-        "",
-        "## 输出文件",
-        "",
-        "| 文件 | 说明 |",
-        "|---|---|",
-        "| `cn_tw.m3u` | 全量 M3U 订阅 |",
-        "| `cn_tw.txt` | 全量 TXT 订阅 |",
-        "| `tv_all.txt` | 全量 TXT 订阅，兼容旧文件名 |",
-        "| `tv_v4.txt` | 仅 IPv4/非 IPv6 链接 |",
-        "| `tv_v6.txt` | 仅 IPv6 链接 |",
-        "| `cn_tw_v4.m3u` | 仅 IPv4/非 IPv6 M3U |",
-        "| `cn_tw_v6.m3u` | 仅 IPv6 M3U |",
-        "| `stats.json` | 机器可读统计信息 |",
-        "",
-        "## 分组统计",
-        "",
-        "| 分组 | 数量 |",
-        "|---|---:|",
-    ]
-
-    for group, count in group_counter.most_common():
-        lines.append(f"| {group} | {count} |")
-
-    lines.extend([
-        "",
-        "## 来源统计",
-        "",
-        "| 来源 | 本次解析数 | 最终保留数 | 状态 |",
-        "|---|---:|---:|---|",
-    ])
+def load_channels() -> tuple[list[Channel], list[dict]]:
+    all_channels: list[Channel] = []
+    source_status: list[dict] = []
 
     for source in SOURCES:
-        stats = source_stats.get(source.name, {"count": 0, "status": "not_run"})
-        lines.append(
-            f"| {source.name} | {stats.get('count', 0)} | {source_counter.get(source.name, 0)} | {stats.get('status', '')} |"
-        )
+        name = source["name"]
+        url = maybe_proxy(source["url"], source.get("allow_proxy", False))
+        fmt = source.get("format", "m3u")
+        trusted = bool(source.get("trusted", False))
 
-    lines.append("")
-    return "\n".join(lines)
+        try:
+            log(f"Fetching {name}: {url}")
+            text = fetch_text(url)
 
+            if fmt == "txt":
+                channels = parse_txt(text, name, trusted_source=trusted)
+            else:
+                channels = parse_m3u(text, name, trusted_source=trusted)
 
-def write_outputs(channels: list[Channel], source_stats: dict[str, dict[str, int | str]]) -> None:
-    ensure_output_dir()
+            all_channels.extend(channels)
+            source_status.append({"name": name, "ok": True, "count": len(channels), "error": ""})
+            log(f"  OK: {len(channels)} channels")
+        except Exception as exc:
+            source_status.append({"name": name, "ok": False, "count": 0, "error": str(exc)[:300]})
+            log(f"  WARN: {name} failed: {exc}")
 
-    generated_at = dt.datetime.now(dt.timezone.utc).astimezone().isoformat(timespec="seconds")
-
-    v4_channels = [c for c in channels if not c.is_ipv6]
-    v6_channels = [c for c in channels if c.is_ipv6]
-
-    outputs = {
-        "cn_tw.txt": render_txt(channels),
-        "tv_all.txt": render_txt(channels),
-        "tv_v4.txt": render_txt(v4_channels),
-        "tv_v6.txt": render_txt(v6_channels),
-        "cn_tw.m3u": render_m3u(channels),
-        "cn_tw_v4.m3u": render_m3u(v4_channels),
-        "cn_tw_v6.m3u": render_m3u(v6_channels),
-        "index.html": render_index(generated_at, channels),
-        "status.md": render_status(generated_at, channels, source_stats),
-    }
-
-    for filename, content in outputs.items():
-        atomic_write(OUTPUT_DIR / filename, content)
-
-    stats = {
-        "generated_at": generated_at,
-        "total": len(channels),
-        "ipv4": len(v4_channels),
-        "ipv6": len(v6_channels),
-        "groups": dict(Counter(c.group for c in channels)),
-        "sources": source_stats,
-        "final_sources": dict(Counter(c.source for c in channels)),
-        "files": list(outputs.keys()),
-    }
-    atomic_write(OUTPUT_DIR / "stats.json", json.dumps(stats, ensure_ascii=False, indent=2) + "\n")
+    return dedupe_channels(all_channels), source_status
 
 
 def main() -> int:
-    print(f"输出目录：{OUTPUT_DIR}")
-    print(f"GitHub Raw 代理：{'已启用' if GH_PROXY else '未启用'}")
-    print(f"链接检测：{'已启用' if CHECK_STREAMS else '未启用'}")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    channels, source_stats = collect_channels()
-    if not channels:
-        print("没有解析到任何频道，拒绝覆盖旧文件。", file=sys.stderr)
-        return 2
+    channels, source_status = load_channels()
 
-    write_outputs(channels, source_stats)
+    if CHECK_STREAMS:
+        log("Checking stream URLs. This may take a while.")
+        checked: list[Channel] = []
+        for channel in channels:
+            channel.ok = check_url(channel.url)
+            if channel.ok:
+                checked.append(channel)
+        channels = checked
 
-    print(f"同步完成：共生成 {len(channels)} 个频道。")
-    print(f"输出文件已写入：{OUTPUT_DIR}")
+    channels = sorted(channels, key=lambda c: (c.group, c.name.lower(), c.url))
+
+    v4_channels = [c for c in channels if not c.ipv6]
+    v6_channels = [c for c in channels if c.ipv6]
+
+    write_txt(OUTPUT_DIR / "cn_tw.txt", channels)
+    write_txt(OUTPUT_DIR / "tv_all.txt", channels)
+    write_txt(OUTPUT_DIR / "tv_v4.txt", v4_channels)
+    write_txt(OUTPUT_DIR / "tv_v6.txt", v6_channels)
+
+    write_m3u(OUTPUT_DIR / "cn_tw.m3u", channels)
+    write_m3u(OUTPUT_DIR / "cn_tw_v4.m3u", v4_channels)
+    write_m3u(OUTPUT_DIR / "cn_tw_v6.m3u", v6_channels)
+
+    stats = write_stats(OUTPUT_DIR / "stats.json", channels, source_status)
+    write_status(OUTPUT_DIR / "status.md", stats)
+    write_index(OUTPUT_DIR / "index.html", stats)
+
+    log(f"Generated {len(channels)} channels in {OUTPUT_DIR}")
+    log(f"IPv4/non-IPv6: {len(v4_channels)}, IPv6: {len(v6_channels)}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())

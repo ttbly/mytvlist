@@ -1,46 +1,57 @@
-# my-iptv-list
+# mytvlist
 
 自动聚合多个公开 IPTV 列表，提取大陆、港澳台及常见中文频道，生成适用于 IPTV 播放器、TVBox/DIYP 类软件、VLC、TiviMate、APTV 等工具的 `M3U` 与 `TXT` 订阅文件。
 
-> 本项目只聚合公开网络来源中的链接，不托管、不缓存、不转发任何视频内容。频道是否可播放会受地区、运营商、IPv6、上游维护状态、播放器兼容性等因素影响。
+> 本项目只聚合公开网络来源中的文本链接，不托管、不缓存、不转发任何视频内容。频道是否可播放会受地区、运营商、IPv6、上游维护状态、播放器兼容性等因素影响。
 
 ## 订阅地址
 
-### M3U
+### 推荐：M3U 全量订阅
+
+适合 VLC、TiviMate、APTV、OTT Navigator、Televizo、IPTV Pro 等大多数 IPTV 播放器。
 
 ```text
-https://raw.githubusercontent.com/ltxxjs/my-iptv-list/main/cn_tw.m3u
+https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.m3u
 ```
 
-### TXT
+### TVBox / DIYP：TXT 全量订阅
+
+适合 TVBox、DIYP、部分国产直播壳子和只支持 TXT 频道列表的软件。
 
 ```text
-https://raw.githubusercontent.com/ltxxjs/my-iptv-list/main/cn_tw.txt
+https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.txt
 ```
 
-### IPv4 / IPv6 分流
+### IPv4 / IPv6 分流订阅
+
+如果你的网络或播放器不支持 IPv6，建议使用 IPv4 文件。
 
 ```text
-https://raw.githubusercontent.com/ltxxjs/my-iptv-list/main/cn_tw_v4.m3u
-https://raw.githubusercontent.com/ltxxjs/my-iptv-list/main/cn_tw_v6.m3u
-https://raw.githubusercontent.com/ltxxjs/my-iptv-list/main/tv_v4.txt
-https://raw.githubusercontent.com/ltxxjs/my-iptv-list/main/tv_v6.txt
+https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw_v4.m3u
+https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v4.txt
+```
+
+如果你明确有 IPv6 网络，可以使用 IPv6 文件。
+
+```text
+https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw_v6.m3u
+https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v6.txt
 ```
 
 ## 输出文件说明
 
-| 文件 | 说明 |
-|---|---|
-| `cn_tw.m3u` | 全量 M3U 订阅 |
-| `cn_tw.txt` | 全量 TXT 订阅 |
-| `tv_all.txt` | 全量 TXT 订阅，兼容旧文件名 |
-| `tv_v4.txt` | 仅 IPv4/非 IPv6 链接 |
-| `tv_v6.txt` | 仅 IPv6 链接 |
-| `cn_tw_v4.m3u` | 仅 IPv4/非 IPv6 M3U |
-| `cn_tw_v6.m3u` | 仅 IPv6 M3U |
-| `stats.json` | 机器可读统计信息 |
-| `status.md` | 最近一次更新状态 |
-| `index.html` | Docker/Nginx 部署时的 Web 首页 |
+| 文件 | 说明 | 是否用于播放 |
+|---|---|---|
+| `cn_tw.m3u` | 全量 M3U 订阅，包含 IPv4 + IPv6 | 推荐 |
+| `cn_tw.txt` | 全量 TXT 订阅，适合 TVBox/DIYP | 推荐 |
+| `tv_all.txt` | 全量 TXT 订阅，兼容旧文件名 | 可选 |
+| `cn_tw_v4.m3u` | 仅 IPv4/非 IPv6 的 M3U | 网络不支持 IPv6 时用 |
+| `tv_v4.txt` | 仅 IPv4/非 IPv6 的 TXT | TVBox 不支持 IPv6 时用 |
+| `cn_tw_v6.m3u` | 仅 IPv6 的 M3U | 仅 IPv6 环境使用 |
+| `tv_v6.txt` | 仅 IPv6 的 TXT | 仅 IPv6 环境使用 |
+| `stats.json` | 机器可读统计信息 | 不用于播放 |
+| `status.md` | 最近一次更新状态说明 | 不用于播放 |
+| `index.html` | Docker/Nginx 部署时的网页首页 | 不用于播放 |
 
 ## 数据来源
 
@@ -103,9 +114,8 @@ Actions -> Update IPTV List -> Run workflow
 ## 本地运行
 
 ```bash
-git clone https://github.com/ltxxjs/my-iptv-list.git
-cd my-iptv-list
-
+git clone https://github.com/ttbly/mytvlist.git
+cd mytvlist
 python -m pip install -r requirements.txt
 python filter.py
 ```
@@ -166,6 +176,22 @@ UPDATE_INTERVAL_SECONDS: "21600"
 
 ## 常见问题
 
+### 应该使用哪个文件播放？
+
+普通 IPTV 播放器优先用：
+
+```text
+https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.m3u
+```
+
+TVBox / DIYP 类软件优先用：
+
+```text
+https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.txt
+```
+
+如果加载慢或你的网络不支持 IPv6，就用 `cn_tw_v4.m3u` 或 `tv_v4.txt`。
+
 ### 为什么有些频道不能播放？
 
 可能原因包括：
@@ -179,7 +205,8 @@ UPDATE_INTERVAL_SECONDS: "21600"
 
 ### 为什么默认不检测所有直播链接？
 
-逐个检测会显著增加运行时间，也可能触发上游限流。  
+逐个检测会显著增加运行时间，也可能触发上游限流。
+
 因此默认只聚合和去重，不做全量测速。需要检测时，可以手动运行 Actions 并设置 `check_streams=1`。
 
 ### `tv_v4.txt` 是否真的是 IPv4？
@@ -188,7 +215,10 @@ UPDATE_INTERVAL_SECONDS: "21600"
 
 ## 免责声明
 
-本项目仅用于学习、研究和个人测试。  
-本项目不生产、不托管、不缓存、不转发任何视频内容，只对公开网络来源中的文本链接进行整理。  
-请确保你的使用方式符合所在地法律法规以及相关内容授权要求。  
+本项目仅用于学习、研究和个人测试。
+
+本项目不生产、不托管、不缓存、不转发任何视频内容，只对公开网络来源中的文本链接进行整理。
+
+请确保你的使用方式符合所在地法律法规以及相关内容授权要求。
+
 如有任何来源或链接不适合收录，请提交 Issue 或 Pull Request 反馈。

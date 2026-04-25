@@ -22,16 +22,21 @@ concurrency:
   group: iptv-update
   cancel-in-progress: true
 
+env:
+  TZ: Asia/Shanghai
+  PYTHONUTF8: "1"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: "pip"
@@ -41,7 +46,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run filter
+      - name: Generate IPTV files
         env:
           INPUT_CHECK_STREAMS: ${{ github.event.inputs.check_streams }}
           INPUT_GH_PROXY: ${{ github.event.inputs.gh_proxy }}
@@ -50,6 +55,10 @@ jobs:
           export GH_PROXY="${INPUT_GH_PROXY:-}"
           export OUTPUT_DIR="."
           python filter.py
+
+      - name: Show generated files
+        run: |
+          ls -lh cn_tw.txt tv_all.txt tv_v4.txt tv_v6.txt cn_tw.m3u cn_tw_v4.m3u cn_tw_v6.m3u stats.json status.md index.html 2>/dev/null || true
 
       - name: Commit and push changes
         run: |

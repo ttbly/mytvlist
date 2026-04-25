@@ -1,57 +1,89 @@
 # mytvlist
 
-自动聚合多个公开 IPTV 列表，提取大陆、港澳台及常见中文频道，生成适用于 IPTV 播放器、TVBox/DIYP 类软件、VLC、TiviMate、APTV 等工具的 `M3U` 与 `TXT` 订阅文件。
+自动聚合多个公开 IPTV 列表，并按照固定分类顺序生成适用于 IPTV 播放器、TVBox/DIYP、VLC、TiviMate、APTV 等工具的 `M3U` 与 `TXT` 订阅文件。
 
-> 本项目只聚合公开网络来源中的文本链接，不托管、不缓存、不转发任何视频内容。频道是否可播放会受地区、运营商、IPv6、上游维护状态、播放器兼容性等因素影响。
+> 本项目只聚合公开网络来源中的链接，不托管、不缓存、不转发任何视频内容。频道是否可播放会受地区、运营商、IPv6、上游维护状态、播放器兼容性等因素影响。
 
-## 订阅地址
+## 推荐订阅地址
 
-### 推荐：M3U 全量订阅
-
-适合 VLC、TiviMate、APTV、OTT Navigator、Televizo、IPTV Pro 等大多数 IPTV 播放器。
+### 普通 IPTV 播放器
 
 ```text
 https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.m3u
 ```
 
-### TVBox / DIYP：TXT 全量订阅
-
-适合 TVBox、DIYP、部分国产直播壳子和只支持 TXT 频道列表的软件。
+### TVBox / DIYP
 
 ```text
 https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.txt
 ```
 
-### IPv4 / IPv6 分流订阅
-
-如果你的网络或播放器不支持 IPv6，建议使用 IPv4 文件。
+### IPv4 / IPv6 分流
 
 ```text
 https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw_v4.m3u
-https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v4.txt
-```
-
-如果你明确有 IPv6 网络，可以使用 IPv6 文件。
-
-```text
 https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw_v6.m3u
+https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v4.txt
 https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v6.txt
 ```
 
 ## 输出文件说明
 
-| 文件 | 说明 | 是否用于播放 |
-|---|---|---|
-| `cn_tw.m3u` | 全量 M3U 订阅，包含 IPv4 + IPv6 | 推荐 |
-| `cn_tw.txt` | 全量 TXT 订阅，适合 TVBox/DIYP | 推荐 |
-| `tv_all.txt` | 全量 TXT 订阅，兼容旧文件名 | 可选 |
-| `cn_tw_v4.m3u` | 仅 IPv4/非 IPv6 的 M3U | 网络不支持 IPv6 时用 |
-| `tv_v4.txt` | 仅 IPv4/非 IPv6 的 TXT | TVBox 不支持 IPv6 时用 |
-| `cn_tw_v6.m3u` | 仅 IPv6 的 M3U | 仅 IPv6 环境使用 |
-| `tv_v6.txt` | 仅 IPv6 的 TXT | 仅 IPv6 环境使用 |
-| `stats.json` | 机器可读统计信息 | 不用于播放 |
-| `status.md` | 最近一次更新状态说明 | 不用于播放 |
-| `index.html` | Docker/Nginx 部署时的网页首页 | 不用于播放 |
+| 文件 | 说明 |
+|---|---|
+| `cn_tw.m3u` | 全量 M3U 订阅，普通播放器优先使用 |
+| `cn_tw.txt` | 全量 TXT 订阅，TVBox/DIYP 优先使用 |
+| `tv_all.txt` | 全量 TXT 订阅，兼容旧文件名 |
+| `tv_v4.txt` | 仅 IPv4/非 IPv6 链接 |
+| `tv_v6.txt` | 仅 IPv6 链接 |
+| `cn_tw_v4.m3u` | 仅 IPv4/非 IPv6 M3U |
+| `cn_tw_v6.m3u` | 仅 IPv6 M3U |
+| `stats.json` | 机器可读统计信息 |
+| `status.md` | 最近一次更新状态 |
+| `index.html` | Docker/Nginx 部署时的 Web 首页 |
+
+## 分类规则
+
+脚本会按照下面的固定顺序输出，不再让分类乱跳：
+
+1. 中央台
+2. 卫视
+3. 港澳频道
+4. 台湾频道
+5. 北京频道
+6. 天津频道
+7. 上海频道
+8. 重庆频道
+9. 河北频道
+10. 山西频道
+11. 内蒙古频道
+12. 辽宁频道
+13. 吉林频道
+14. 黑龙江频道
+15. 江苏频道
+16. 浙江频道
+17. 安徽频道
+18. 福建频道
+19. 江西频道
+20. 山东频道
+21. 河南频道
+22. 湖北频道
+23. 湖南频道
+24. 广东频道
+25. 广西频道
+26. 海南频道
+27. 四川频道
+28. 贵州频道
+29. 云南频道
+30. 西藏频道
+31. 陕西频道
+32. 甘肃频道
+33. 青海频道
+34. 宁夏频道
+35. 新疆频道
+36. 地方及其他
+
+分类逻辑会优先判断中央台、港澳、台湾、卫视，再判断各省地方台，避免所有地方频道都堆在一个“地方频道”下面。
 
 ## 数据来源
 
@@ -66,19 +98,6 @@ https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v6.txt
 
 如果某个来源失效，脚本会跳过该来源，不会因为单个上游失败而中断整个更新流程。
 
-## 分类规则
-
-脚本会自动归类：
-
-- 中央台
-- 卫视
-- 港澳频道
-- 台湾频道
-- 各省地方频道
-- 地方及其他
-
-同时会过滤明显不适合收录的成人、午夜、情色等关键词频道。
-
 ## 自动更新
 
 本仓库通过 GitHub Actions 每天自动运行一次：
@@ -86,15 +105,6 @@ https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v6.txt
 ```text
 .github/workflows/update.yml
 ```
-
-默认逻辑：
-
-1. 安装 Python 依赖；
-2. 运行 `filter.py`；
-3. 生成最新的 `m3u/txt/json/md/html` 文件；
-4. 如果内容变化，自动提交；
-5. 如果没有变化，不再每天制造 heartbeat 提交；
-6. 每月 1 日无变化时才提交一次轻量 keepalive，降低定时任务被禁用的概率。
 
 你也可以在 GitHub 仓库页面进入：
 
@@ -110,6 +120,7 @@ Actions -> Update IPTV List -> Run workflow
 |---|---|
 | `check_streams` | `0` 或 `1`，是否对频道链接做轻量检测。默认 `0` |
 | `gh_proxy` | 可选 GitHub Raw 代理前缀，例如 `https://gh-proxy.example.com/` |
+| `max_same_channel_urls` | 同一频道最多保留几条线路，默认 `8` |
 
 ## 本地运行
 
@@ -138,6 +149,12 @@ CHECK_STREAMS=1 python filter.py
 GH_PROXY=https://gh-proxy.example.com/ python filter.py
 ```
 
+如需调整同一频道最多保留线路数：
+
+```bash
+MAX_SAME_CHANNEL_URLS=12 python filter.py
+```
+
 ## Docker 部署
 
 构建并启动：
@@ -146,12 +163,7 @@ GH_PROXY=https://gh-proxy.example.com/ python filter.py
 docker compose up -d --build
 ```
 
-默认会：
-
-- 每 6 小时自动更新一次；
-- 将生成文件写入 Docker volume；
-- 通过 Nginx 对外提供订阅文件；
-- 本地访问地址为：
+默认本地访问地址：
 
 ```text
 http://localhost:28024/
@@ -166,31 +178,7 @@ http://localhost:28024/tv_v4.txt
 http://localhost:28024/tv_v6.txt
 ```
 
-如需修改更新间隔，编辑 `docker-compose.yml`：
-
-```yaml
-UPDATE_INTERVAL_SECONDS: "21600"
-```
-
-`21600` 秒即 6 小时。
-
 ## 常见问题
-
-### 应该使用哪个文件播放？
-
-普通 IPTV 播放器优先用：
-
-```text
-https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.m3u
-```
-
-TVBox / DIYP 类软件优先用：
-
-```text
-https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.txt
-```
-
-如果加载慢或你的网络不支持 IPv6，就用 `cn_tw_v4.m3u` 或 `tv_v4.txt`。
 
 ### 为什么有些频道不能播放？
 

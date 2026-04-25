@@ -2,25 +2,23 @@ services:
   iptv-filter:
     build: .
     container_name: mytvlist-filter
-    restart: unless-stopped
     environment:
-      OUTPUT_DIR: /app/data
-      UPDATE_INTERVAL_SECONDS: "21600"
-      CHECK_STREAMS: "0"
-      GH_PROXY: ""
+      - OUTPUT_DIR=/app/data
+      - MAX_SAME_CHANNEL_URLS=8
     volumes:
       - iptv_data:/app/data
+    restart: "no"
 
-  web:
+  nginx:
     image: nginx:alpine
-    container_name: mytvlist-web
-    restart: unless-stopped
+    container_name: mytvlist-nginx
+    depends_on:
+      - iptv-filter
     ports:
       - "28024:80"
     volumes:
       - iptv_data:/usr/share/nginx/html:ro
-    depends_on:
-      - iptv-filter
+    restart: unless-stopped
 
 volumes:
   iptv_data:

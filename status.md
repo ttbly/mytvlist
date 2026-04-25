@@ -1,74 +1,78 @@
 # IPTV 更新状态
 
-- 更新时间：`2026-04-25T22:38:43+00:00`
-- 频道总数：`2172`
-- IPv4 数量：`2031`
-- IPv6 数量：`141`
-- 是否启用链接检测：`False`
+生成时间：`2026-04-25T23:01:55.789793+00:00`
 
-## 输出文件
+仓库：`ttbly/mytvlist`
+
+## 统计
+
+| 项目 | 数量 |
+|---|---:|
+| 全部频道源 | 1073 |
+| IPv4/非 IPv6 | 987 |
+| IPv6 | 86 |
+
+## 订阅地址
 
 | 文件 | 说明 |
 |---|---|
-| `cn_tw.m3u` | 全量 M3U 订阅 |
-| `cn_tw.txt` | 全量 TXT 订阅 |
-| `tv_all.txt` | 全量 TXT 订阅，兼容旧文件名 |
-| `tv_v4.txt` | 仅 IPv4/非 IPv6 链接 |
-| `tv_v6.txt` | 仅 IPv6 链接 |
-| `cn_tw_v4.m3u` | 仅 IPv4/非 IPv6 M3U |
-| `cn_tw_v6.m3u` | 仅 IPv6 M3U |
-| `stats.json` | 机器可读统计信息 |
+| [`cn_tw.m3u`](https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.m3u) | 全量 M3U |
+| [`cn_tw.txt`](https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw.txt) | 全量 TXT |
+| [`tv_all.txt`](https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_all.txt) | 全量 TXT，兼容旧文件名 |
+| [`cn_tw_v4.m3u`](https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw_v4.m3u) | IPv4/非 IPv6 M3U |
+| [`tv_v4.txt`](https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v4.txt) | IPv4/非 IPv6 TXT |
+| [`cn_tw_v6.m3u`](https://raw.githubusercontent.com/ttbly/mytvlist/main/cn_tw_v6.m3u) | IPv6 M3U |
+| [`tv_v6.txt`](https://raw.githubusercontent.com/ttbly/mytvlist/main/tv_v6.txt) | IPv6 TXT |
+
+## 上游源状态
+
+| 状态 | 来源 | 解析数量 | 错误 |
+|---|---|---:|---|
+| ✅ | `iptv-org-cn` | 153 |  |
+| ✅ | `iptv-org-hk` | 13 |  |
+| ✅ | `iptv-org-mo` | 7 |  |
+| ✅ | `iptv-org-tw` | 23 |  |
+| ✅ | `fanmingming-ipv6` | 82 |  |
+| ✅ | `YanG-1989-Gather` | 0 |  |
+| ✅ | `hujingguang-ChinaIPTV` | 33 |  |
+| ⚠️ | `frankwuzp-iptv-cn` | 0 | `404 Client Error: Not Found for url: https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/iptv.m3u` |
+| ✅ | `Guovin-iptv-api-result-m3u` | 811 |  |
+| ✅ | `Guovin-iptv-api-result-txt` | 811 |  |
 
 ## 分组统计
 
 | 分组 | 数量 |
 |---|---:|
-| 卫视 | 345 |
-| 地方及其他 | 294 |
-| 中央台 | 288 |
-| 浙江频道 | 203 |
-| 江苏频道 | 141 |
-| 河南频道 | 124 |
-| 港澳频道 | 96 |
-| 上海频道 | 70 |
-| 河北频道 | 57 |
-| 广东频道 | 55 |
-| 四川频道 | 54 |
-| 台湾频道 | 44 |
-| 福建频道 | 42 |
-| 湖北频道 | 42 |
-| 湖南频道 | 42 |
-| 黑龙江频道 | 37 |
-| 安徽频道 | 33 |
-| 山东频道 | 32 |
-| 广西频道 | 29 |
-| 海南频道 | 25 |
-| 北京频道 | 22 |
-| 辽宁频道 | 17 |
-| 陕西频道 | 16 |
-| 甘肃频道 | 13 |
-| 山西频道 | 12 |
-| 青海频道 | 9 |
-| 新疆频道 | 9 |
-| 云南频道 | 8 |
-| 内蒙古频道 | 5 |
-| 吉林频道 | 3 |
-| 贵州频道 | 2 |
-| 天津频道 | 1 |
-| 重庆频道 | 1 |
-| 宁夏频道 | 1 |
-
-## 来源统计
-
-| 来源 | 本次解析数 | 最终保留数 | 状态 |
-|---|---:|---:|---|
-| IPTV_ORG_CN | 153 | 153 | ok |
-| IPTV_ORG_HK | 13 | 13 | ok |
-| IPTV_ORG_MO | 7 | 7 | ok |
-| IPTV_ORG_TW | 23 | 23 | ok |
-| FANMINGMING_IPV6 | 78 | 78 | ok |
-| YANG_GATHER | 27 | 27 | ok |
-| GUOVIN_RESULT | 1758 | 1663 | ok |
-| CHINAIPTV_AUTO | 68 | 57 | ok |
-| FRANKWUZP_IPV4_CN | 87 | 84 | ok |
-| FRANKWUZP_IPV4_CMCC | 94 | 67 | ok |
+| Animation;Kids | 3 |
+| Business | 5 |
+| Comedy | 1 |
+| Culture | 2 |
+| Culture;Education | 1 |
+| Documentary | 2 |
+| Education | 4 |
+| Education;Lifestyle;Science | 1 |
+| Education;Science | 3 |
+| Entertainment | 3 |
+| General | 28 |
+| General;News | 1 |
+| Kids | 3 |
+| Kids;Lifestyle | 1 |
+| Legislative | 1 |
+| Lifestyle | 5 |
+| Movies | 7 |
+| News | 14 |
+| Outdoor | 1 |
+| Religious | 8 |
+| Shop | 3 |
+| Sports | 3 |
+| Undefined | 24 |
+| Weather | 1 |
+| ☘️上海频道 | 6 |
+| 中央台 | 157 |
+| 内蒙频道 | 12 |
+| 卫视 | 405 |
+| 卫视频道 | 4 |
+| 台湾频道 | 26 |
+| 地方频道 | 287 |
+| 浙江频道 | 1 |
+| 港澳频道 | 50 |

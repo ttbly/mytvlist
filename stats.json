@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-04-25T22:38:43+00:00",
+  "total": 2172,
+  "ipv4": 2031,
+  "ipv6": 141,
+  "groups": {
+    "中央台": 288,
+    "卫视": 345,
+    "港澳频道": 96,
+    "台湾频道": 44,
+    "北京频道": 22,
+    "天津频道": 1,
+    "上海频道": 70,
+    "重庆频道": 1,
+    "河北频道": 57,
+    "山西频道": 12,
+    "辽宁频道": 17,
+    "吉林频道": 3,
+    "黑龙江频道": 37,
+    "江苏频道": 141,
+    "浙江频道": 203,
+    "安徽频道": 33,
+    "福建频道": 42,
+    "山东频道": 32,
+    "河南频道": 124,
+    "湖北频道": 42,
+    "湖南频道": 42,
+    "广东频道": 55,
+    "海南频道": 25,
+    "四川频道": 54,
+    "贵州频道": 2,
+    "云南频道": 8,
+    "陕西频道": 16,
+    "甘肃频道": 13,
+    "青海频道": 9,
+    "内蒙古频道": 5,
+    "广西频道": 29,
+    "宁夏频道": 1,
+    "新疆频道": 9,
+    "地方及其他": 294
+  },
+  "sources": {
+    "IPTV_ORG_CN": {
+      "status": "ok",
+      "count": 153,
+      "url": "https://iptv-org.github.io/iptv/countries/cn.m3u"
+    },
+    "IPTV_ORG_HK": {
+      "status": "ok",
+      "count": 13,
+      "url": "https://iptv-org.github.io/iptv/countries/hk.m3u"
+    },
+    "IPTV_ORG_MO": {
+      "status": "ok",
+      "count": 7,
+      "url": "https://iptv-org.github.io/iptv/countries/mo.m3u"
+    },
+    "IPTV_ORG_TW": {
+      "status": "ok",
+      "count": 23,
+      "url": "https://iptv-org.github.io/iptv/countries/tw.m3u"
+    },
+    "FANMINGMING_IPV6": {
+      "status": "ok",
+      "count": 78,
+      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+    },
+    "YANG_GATHER": {
+      "status": "ok",
+      "count": 27,
+      "url": "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u"
+    },
+    "GUOVIN_RESULT": {
+      "status": "ok",
+      "count": 1758,
+      "url": "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+    },
+    "CHINAIPTV_AUTO": {
+      "status": "ok",
+      "count": 68,
+      "url": "https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/cnTV_AutoUpdate.m3u8"
+    },
+    "FRANKWUZP_IPV4_CN": {
+      "status": "ok",
+      "count": 87,
+      "url": "https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/tv-ipv4-cn.m3u"
+    },
+    "FRANKWUZP_IPV4_CMCC": {
+      "status": "ok",
+      "count": 94,
+      "url": "https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/tv-ipv4-cmcc.m3u"
+    }
+  },
+  "final_sources": {
+    "IPTV_ORG_CN": 153,
+    "GUOVIN_RESULT": 1663,
+    "FRANKWUZP_IPV4_CN": 84,
+    "FANMINGMING_IPV6": 78,
+    "CHINAIPTV_AUTO": 57,
+    "FRANKWUZP_IPV4_CMCC": 67,
+    "IPTV_ORG_MO": 7,
+    "IPTV_ORG_HK": 13,
+    "IPTV_ORG_TW": 23,
+    "YANG_GATHER": 27
+  },
+  "files": [
+    "cn_tw.txt",
+    "tv_all.txt",
+    "tv_v4.txt",
+    "tv_v6.txt",
+    "cn_tw.m3u",
+    "cn_tw_v4.m3u",
+    "cn_tw_v6.m3u",
+    "index.html",
+    "status.md"
+  ]
+}

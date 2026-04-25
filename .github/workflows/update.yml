@@ -4,6 +4,7 @@ on:
   schedule:
     # GitHub 使用 UTC；21:30 UTC ≈ 北京/台北 05:30，韩国 06:30
     - cron: "30 21 * * *"
+
   workflow_dispatch:
     inputs:
       check_streams:
@@ -14,6 +15,10 @@ on:
         description: "可选 GitHub Raw 代理前缀，例如 https://gh-proxy.example.com/"
         required: false
         default: ""
+      max_same_channel_urls:
+        description: "同一频道最多保留几条线路，默认 8"
+        required: false
+        default: "8"
 
 permissions:
   contents: write
@@ -23,16 +28,16 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
   TZ: Asia/Shanghai
   PYTHONUTF8: "1"
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v6
 
       - name: Set up Python
@@ -46,19 +51,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Generate IPTV files
+      - name: Run filter
         env:
           INPUT_CHECK_STREAMS: ${{ github.event.inputs.check_streams }}
           INPUT_GH_PROXY: ${{ github.event.inputs.gh_proxy }}
+          INPUT_MAX_SAME_CHANNEL_URLS: ${{ github.event.inputs.max_same_channel_urls }}
         run: |
           export CHECK_STREAMS="${INPUT_CHECK_STREAMS:-0}"
           export GH_PROXY="${INPUT_GH_PROXY:-}"
+          export MAX_SAME_CHANNEL_URLS="${INPUT_MAX_SAME_CHANNEL_URLS:-8}"
           export OUTPUT_DIR="."
           python filter.py
-
-      - name: Show generated files
-        run: |
-          ls -lh cn_tw.txt tv_all.txt tv_v4.txt tv_v6.txt cn_tw.m3u cn_tw_v4.m3u cn_tw_v6.m3u stats.json status.md index.html 2>/dev/null || true
 
       - name: Commit and push changes
         run: |
@@ -83,8 +86,6 @@ jobs:
           else
             echo "No playlist changes detected."
 
-            # GitHub 公共仓库长期无活动时，定时工作流可能被禁用。
-            # 这里只在每月 1 日做一次轻量 keepalive，避免每天污染提交历史。
             if [ "$(date -u +'%d')" = "01" ]; then
               date -u +'%Y-%m-%d %H:%M:%S UTC' > heartbeat.txt
               git add heartbeat.txt

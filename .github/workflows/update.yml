@@ -1,0 +1,85 @@
+name: Update IPTV List
+
+on:
+  schedule:
+    # GitHub 使用 UTC；21:30 UTC ≈ 北京/台北 05:30，韩国 06:30
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+    inputs:
+      check_streams:
+        description: "是否对频道链接做轻量可用性检测：0/1"
+        required: false
+        default: "0"
+      gh_proxy:
+        description: "可选 GitHub Raw 代理前缀，例如 https://gh-proxy.example.com/"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iptv-update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run filter
+        env:
+          INPUT_CHECK_STREAMS: ${{ github.event.inputs.check_streams }}
+          INPUT_GH_PROXY: ${{ github.event.inputs.gh_proxy }}
+        run: |
+          export CHECK_STREAMS="${INPUT_CHECK_STREAMS:-0}"
+          export GH_PROXY="${INPUT_GH_PROXY:-}"
+          export OUTPUT_DIR="."
+          python filter.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            cn_tw.txt \
+            tv_all.txt \
+            tv_v4.txt \
+            tv_v6.txt \
+            cn_tw.m3u \
+            cn_tw_v4.m3u \
+            cn_tw_v6.m3u \
+            stats.json \
+            status.md \
+            index.html
+
+          if ! git diff --staged --quiet; then
+            git commit -m "Update IPTV lists: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          else
+            echo "No playlist changes detected."
+
+            # GitHub 公共仓库长期无活动时，定时工作流可能被禁用。
+            # 这里只在每月 1 日做一次轻量 keepalive，避免每天污染提交历史。
+            if [ "$(date -u +'%d')" = "01" ]; then
+              date -u +'%Y-%m-%d %H:%M:%S UTC' > heartbeat.txt
+              git add heartbeat.txt
+              git commit -m "Monthly workflow keepalive"
+              git push
+            fi
+          fi

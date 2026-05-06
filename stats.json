@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-05T22:31:12.877153+00:00",
+  "generated_at": "2026-05-06T22:25:04.483988+00:00",
   "repo": "ttbly/mytvlist",
   "total": 1997,
   "ipv4_or_non_ipv6": 1893,
@@ -79,10 +79,10 @@
     "地方及其他": 240
   },
   "sources": {
-    "Guovin-iptv-api-result-m3u": 1643,
+    "Guovin-iptv-api-result-m3u": 1644,
     "YanG-1989-Gather": 27,
     "fanmingming-ipv6": 82,
-    "hujingguang-ChinaIPTV": 60,
+    "hujingguang-ChinaIPTV": 59,
     "iptv-org-cn": 142,
     "iptv-org-hk": 13,
     "iptv-org-mo": 7,
@@ -128,7 +128,7 @@
     {
       "name": "hujingguang-ChinaIPTV",
       "ok": true,
-      "count": 70,
+      "count": 69,
       "error": ""
     },
     {

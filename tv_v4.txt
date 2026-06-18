@@ -76,9 +76,8 @@ CCTV4,http://38.75.136.137:98/gslb/dsdqpub/cctv4hd.m3u8?auth=testpub
 CCTV4,http://74.91.26.218:82/live/cctv4hd.m3u8
 CCTV4,https://iptv.catvod.com/live.php?id=CCTV4&line=3
 CCTV4,https://iptv.catvod.com/live.php?id=CCTV4&line=6
-CCTV4K 高清,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1781787600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-cd32bc8377f3b17f5dfc77cee036bdee&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 CCTV4K (1080p),http://198.204.240.250:82/live/cctv4k.m3u8
-CCTV4 中文国际,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1781787600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-5a165bba8381fc105055f065ff90a794&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+CCTV4 中文国际,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1781877600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-a318bfb5f7b16e83b21a933254b9cc74&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 CCTV5,http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8?auth=testpub
 CCTV5,http://iptv.huuc.edu.cn/hls/cctv5hd.m3u8
 CCTV5,https://iptv.catvod.com/live.php?id=CCTV5&line=1
@@ -118,7 +117,7 @@ CCTV9,https://iptv.catvod.com/live.php?id=CCTV9&line=3
 CCTV9,https://iptv.catvod.com/live.php?id=CCTV9&line=4
 CCTV9,https://iptv.catvod.com/live.php?id=CCTV9&line=5
 CCTV9 (576i),https://xykt-fix.github.io/Y77.m3u8
-CCTV9 纪录,https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=ebba2b107aa27ba09c55694ccbbb6ed3
+CCTV9 纪录,https://v4-702cae17a28d6e4f0c0002bba021d934.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=3efdfcde7bc50796f38d5e976ee41a3e
 CCTVBilliards (1080p),http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 CCTVCulture of Quality (1080p),http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub
 CCTVGolf & Tennis (1080p),http://38.75.136.137:98/gslb/dsdqpub/gefwq.m3u8?auth=testpub
@@ -408,7 +407,7 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 重庆卫视,http://iptv.huuc.edu.cn/hls/cqhd.m3u8
 重庆卫视,https://iptv.catvod.com/live.php?id=%E9%87%8D%E5%BA%86%E5%8D%AB%E8%A7%86&line=1
 重庆卫视,https://iptv.catvod.com/live.php?id=%E9%87%8D%E5%BA%86%E5%8D%AB%E8%A7%86&line=2
-重庆卫视,http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202606180606/app_2/_definst_/ls_2.stream/chunklist.m3u8
+重庆卫视,http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202606190705/app_2/_definst_/ls_2.stream/chunklist.m3u8
 重庆卫视 (1080p),http://118.81.195.79:9003/hls/22/index.m3u8
 陕西卫视,http://107.150.60.122/live/snwshd.m3u8
 陕西卫视,http://38.75.136.137:98/gslb/dsdqpub/sxwshd.m3u8?auth=testpub
@@ -1456,7 +1455,6 @@ Taiwan Indigenous TV (原住民電視) (720p),http://streamipcf.akamaized.net/li
 湖南娱乐,https://stream1.freetv.fun/hu-nan-yu-le-9.ctv
 湖南教育,https://stream1.freetv.fun/hu-nan-jiao-yu-6.ctv
 湖南爱晚,http://php.jdshipin.com:8880/iptv.php?id=hngg
-湖南爱晚,http://phoneqq.qing.mgtv.com/nn_live/nn_x64/Y2hzPSZ1aXA9MTA2LjE0LjM4LjU1JmRlZj0xJnRlcm09NSZxaWQ9JnJhdXRoX2VuYWJsZT1vZmYmY2RuZXhfaWQ9cXFfcGhvbmVfbGl2ZSZuZGk9Njg2ZThjZjhjODhlNzdlYzlhMDc5MzI4OWY1MzQ4NDJhYmVjNGYzYyZ1dWlkPTgxZWZiMWY2YjFlZmZmNTE2N2U0MjVkNjJmZjI1NjRlLTZhMGUyNjM3JnM9NjQ4ZDRjOWE2Yzc0OTA0ODM5NDM3Nzk0NTZhYTc0NjgmdWlkPSZuZHY9aW9zLTYuNS4wJnY9MiZhcz0wJmVzPTE3ODE2Mjg5ODE,/CSXWMPP360.m3u8
 湖南电影,http://php.jdshipin.com:8880/iptv.php
 湖南电影,https://stream1.freetv.fun/hu-nan-dian-ying-2.ctv
 湖南电视剧,https://stream1.freetv.fun/hu-nan-dian-shi-ju-12.m3u8

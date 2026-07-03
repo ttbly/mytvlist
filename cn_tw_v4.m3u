@@ -95,6 +95,8 @@ https://www.freetv.top/migu/673168223.m3u8?migutoken=4e8d5766579c6bef231494cabd0
 https://zby.130519.xyz/PLTV/11/224/3221226147/index.m3u8
 #EXTINF:-1 tvg-name="CCTV15 (1080p)" group-title="中央台",CCTV15 (1080p)
 https://xykt-fix.github.io/play/a02e/index.m3u8
+#EXTINF:-1 tvg-name="CCTV15 音乐" group-title="中央台",CCTV15 音乐
+https://piccpndks.v.kcdnvip.com/audio/cctv15_2/index.m3u8
 #EXTINF:-1 tvg-name="CCTV16" group-title="中央台",CCTV16
 http://38.75.136.137:98/gslb/dsdqpub/cctv16hd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTV16" group-title="中央台",CCTV16
@@ -153,8 +155,12 @@ http://74.91.26.218:82/live/cctv4hd.m3u8
 https://iptv.catvod.com/live.php?id=CCTV4&line=3
 #EXTINF:-1 tvg-name="CCTV4" group-title="中央台",CCTV4
 https://iptv.catvod.com/live.php?id=CCTV4&line=6
+#EXTINF:-1 tvg-name="CCTV4K 高清" group-title="中央台",CCTV4K 高清
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1783170000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-81a38e3fd8065a0283abbc069deefffb&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV4K (1080p)" group-title="中央台",CCTV4K (1080p)
 http://198.204.240.250:82/live/cctv4k.m3u8
+#EXTINF:-1 tvg-name="CCTV4 中文国际" group-title="中央台",CCTV4 中文国际
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1783170000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-f14eb30c303a870afb0ec899d489400a&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
 http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
@@ -183,8 +189,6 @@ http://74.91.26.218:82/live/cctv5p.m3u8
 https://smart.pendy.dpdns.org/Smart.php?id=cctv5plus
 #EXTINF:-1 tvg-name="CCTV5+" group-title="中央台",CCTV5+
 https://www.freetv.top/migu/641886773.m3u8?migutoken=03a1b82e35e58cd89a95034ecb29e77e50493397000ec2b1e4d1ce59af01e6420d6dbc068c8230ec03be3a35a20eed8714e0959e3570a08713a7a2e8d86085eabf8f1aa85744c80c38343988b2
-#EXTINF:-1 tvg-name="CCTV5 体育赛事" group-title="中央台",CCTV5 体育赛事
-https://hlslive1-byte-w4.volcfcdn.com/live/hls_cdrm/enc1/av1/cctv5plus/1080p/index.m3u8
 #EXTINF:-1 tvg-name="CCTV6" group-title="中央台",CCTV6
 https://iptv.catvod.com/live.php?id=CCTV6&line=11
 #EXTINF:-1 tvg-name="CCTV6" group-title="中央台",CCTV6
@@ -197,8 +201,6 @@ https://iptv.catvod.com/live.php?id=CCTV6&line=7
 https://iptv.catvod.com/live.php?id=CCTV6&line=9
 #EXTINF:-1 tvg-name="CCTV6 (1080p)" group-title="中央台",CCTV6 (1080p)
 http://69.30.245.50/live/cctv6.m3u8
-#EXTINF:-1 tvg-name="CCTV6 电影频道" group-title="中央台",CCTV6 电影频道
-https://piccpndks.v.kcdnvip.com/audio/cctv6_2/index.m3u8
 #EXTINF:-1 tvg-name="CCTV7" group-title="中央台",CCTV7
 https://iptv.catvod.com/live.php?id=CCTV7&line=2
 #EXTINF:-1 tvg-name="CCTV7" group-title="中央台",CCTV7
@@ -237,6 +239,8 @@ https://iptv.catvod.com/live.php?id=CCTV9&line=4
 https://iptv.catvod.com/live.php?id=CCTV9&line=5
 #EXTINF:-1 tvg-name="CCTV9 (576i)" group-title="中央台",CCTV9 (576i)
 https://xykt-fix.github.io/Y77.m3u8
+#EXTINF:-1 tvg-name="CCTV9 纪录" group-title="中央台",CCTV9 纪录
+https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=236ec955a3147aa9b17c08a481616c0d
 #EXTINF:-1 tvg-name="CCTVBilliards (1080p)" group-title="中央台",CCTVBilliards (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTVCulture of Quality (1080p)" group-title="中央台",CCTVCulture of Quality (1080p)
@@ -291,6 +295,8 @@ https://migu.188766.xyz/?migutoken=d5d19d868e1df41e984866fc7ca15071&id=CETV4&typ
 http://117.161.133.51:81/gitv_live/G_CETV-1/G_CETV-1.m3u8?p=GITV
 #EXTINF:-1 tvg-name="CETV2 (576p)" group-title="中央台",CETV2 (576p)
 http://117.161.133.51:81/gitv_live/G_CETV-2/G_CETV-2.m3u8?p=GITV
+#EXTINF:-1 tvg-name="CGNT 新闻频道" group-title="中央台",CGNT 新闻频道
+https://english-livebkali.cgtn.com/live/encgtn_0.m3u8
 #EXTINF:-1 tvg-name="CGTN俄语" group-title="中央台",CGTN俄语
 https://0472.org/hls/cgtne.m3u8
 #EXTINF:-1 tvg-name="CGTN法语" group-title="中央台",CGTN法语
@@ -489,6 +495,8 @@ https://iptv.catvod.com/live.php?id=%E5%9B%9B%E5%B7%9D%E5%8D%AB%E8%A7%86&line=1
 https://iptv.catvod.com/live.php?id=%E5%9B%9B%E5%B7%9D%E5%8D%AB%E8%A7%86&line=2
 #EXTINF:-1 tvg-name="四川卫视" group-title="卫视",四川卫视
 https://iptv.catvod.com/live.php?id=%E5%9B%9B%E5%B7%9D%E5%8D%AB%E8%A7%86&line=3
+#EXTINF:-1 tvg-name="四川卫视" group-title="卫视",四川卫视
+https://piccpndks.v.kcdnvip.com/audio/sichuan_2/index.m3u8
 #EXTINF:-1 tvg-name="四川卫视 (576p)" group-title="卫视",四川卫视 (576p)
 http://39.134.115.163:8080/PLTV/88888910/224/3221225733/index.m3u8
 #EXTINF:-1 tvg-name="大湾区卫视" group-title="卫视",大湾区卫视
@@ -812,7 +820,7 @@ https://iptv.catvod.com/live.php?id=%E9%87%8D%E5%BA%86%E5%8D%AB%E8%A7%86&line=1
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
 https://iptv.catvod.com/live.php?id=%E9%87%8D%E5%BA%86%E5%8D%AB%E8%A7%86&line=2
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
-http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202607030605/app_2/_definst_/ls_2.stream/chunklist.m3u8
+http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202607040606/app_2/_definst_/ls_2.stream/chunklist.m3u8
 #EXTINF:-1 tvg-name="重庆卫视 (1080p)" group-title="卫视",重庆卫视 (1080p)
 http://118.81.195.79:9003/hls/22/index.m3u8
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视

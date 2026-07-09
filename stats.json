@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-08T22:32:35.876881+00:00",
+  "generated_at": "2026-07-09T22:50:23.967178+00:00",
   "repo": "ttbly/mytvlist",
   "total": 1982,
-  "ipv4_or_non_ipv6": 1878,
-  "ipv6": 104,
+  "ipv4_or_non_ipv6": 1879,
+  "ipv6": 103,
   "check_streams": false,
   "max_same_channel_urls": 8,
   "group_order": [
@@ -43,8 +43,8 @@
     "地方及其他"
   ],
   "groups": {
-    "中央台": 227,
-    "卫视": 261,
+    "中央台": 228,
+    "卫视": 260,
     "港澳频道": 98,
     "台湾频道": 55,
     "北京频道": 20,

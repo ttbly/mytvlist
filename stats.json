@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-12T22:24:03.490427+00:00",
+  "generated_at": "2026-07-13T22:27:55.820375+00:00",
   "repo": "ttbly/mytvlist",
-  "total": 1977,
-  "ipv4_or_non_ipv6": 1868,
-  "ipv6": 109,
+  "total": 1994,
+  "ipv4_or_non_ipv6": 1886,
+  "ipv6": 108,
   "check_streams": false,
   "max_same_channel_urls": 8,
   "group_order": [
@@ -44,23 +44,23 @@
   ],
   "groups": {
     "中央台": 228,
-    "卫视": 260,
+    "卫视": 263,
     "港澳频道": 97,
-    "台湾频道": 55,
+    "台湾频道": 56,
     "北京频道": 20,
     "天津频道": 2,
     "上海频道": 75,
-    "重庆频道": 1,
+    "重庆频道": 2,
     "河北频道": 57,
-    "山西频道": 10,
+    "山西频道": 11,
     "内蒙古频道": 6,
     "辽宁频道": 10,
     "吉林频道": 3,
     "黑龙江频道": 37,
     "江苏频道": 140,
-    "浙江频道": 200,
-    "安徽频道": 33,
-    "福建频道": 45,
+    "浙江频道": 205,
+    "安徽频道": 34,
+    "福建频道": 46,
     "山东频道": 32,
     "河南频道": 126,
     "湖北频道": 42,
@@ -68,22 +68,22 @@
     "广东频道": 55,
     "广西频道": 30,
     "海南频道": 25,
-    "四川频道": 53,
+    "四川频道": 55,
     "贵州频道": 2,
     "云南频道": 8,
     "陕西频道": 16,
-    "甘肃频道": 15,
+    "甘肃频道": 14,
     "青海频道": 9,
     "宁夏频道": 1,
-    "新疆频道": 7,
-    "地方及其他": 231
+    "新疆频道": 6,
+    "地方及其他": 235
   },
   "sources": {
-    "Guovin-iptv-api-result-m3u": 1626,
+    "Guovin-iptv-api-result-m3u": 1639,
     "YanG-1989-Gather": 27,
     "fanmingming-ipv6": 82,
-    "hujingguang-ChinaIPTV": 50,
-    "iptv-org-cn": 148,
+    "hujingguang-ChinaIPTV": 53,
+    "iptv-org-cn": 149,
     "iptv-org-hk": 13,
     "iptv-org-mo": 7,
     "iptv-org-tw": 24
@@ -92,7 +92,7 @@
     {
       "name": "iptv-org-cn",
       "ok": true,
-      "count": 148,
+      "count": 149,
       "error": ""
     },
     {
@@ -128,7 +128,7 @@
     {
       "name": "hujingguang-ChinaIPTV",
       "ok": true,
-      "count": 69,
+      "count": 72,
       "error": ""
     },
     {
@@ -140,13 +140,13 @@
     {
       "name": "Guovin-iptv-api-result-m3u",
       "ok": true,
-      "count": 1771,
+      "count": 1783,
       "error": ""
     },
     {
       "name": "Guovin-iptv-api-result-txt",
       "ok": true,
-      "count": 1771,
+      "count": 1783,
       "error": ""
     }
   ]

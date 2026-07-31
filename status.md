@@ -1,6 +1,6 @@
 # IPTV 更新状态
 
-生成时间：`2026-07-30T22:35:54.386172+00:00`
+生成时间：`2026-07-31T22:33:00.734161+00:00`
 
 仓库：`ttbly/mytvlist`
 
@@ -30,7 +30,7 @@
 | 分组 | 数量 |
 |---|---:|
 | 中央台 | 231 |
-| 卫视 | 262 |
+| 卫视 | 261 |
 | 港澳频道 | 98 |
 | 台湾频道 | 57 |
 | 北京频道 | 20 |
@@ -50,7 +50,7 @@
 | 山东频道 | 32 |
 | 河南频道 | 126 |
 | 湖北频道 | 42 |
-| 湖南频道 | 45 |
+| 湖南频道 | 46 |
 | 广东频道 | 55 |
 | 广西频道 | 30 |
 | 海南频道 | 25 |
@@ -74,7 +74,7 @@
 | ✅ | `iptv-org-tw` | 25 | `` |
 | ✅ | `fanmingming-ipv6` | 82 | `` |
 | ✅ | `YanG-1989-Gather` | 27 | `` |
-| ✅ | `hujingguang-ChinaIPTV` | 62 | `` |
+| ✅ | `hujingguang-ChinaIPTV` | 69 | `` |
 | ⚠️ | `frankwuzp-iptv-cn` | 0 | `404 Client Error: Not Found for url: https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/iptv.m3u` |
 | ✅ | `Guovin-iptv-api-result-m3u` | 1779 | `` |
 | ✅ | `Guovin-iptv-api-result-txt` | 1779 | `` |

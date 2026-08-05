@@ -56,6 +56,7 @@ CCTV16,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/
 CCTV16,https://hls-gateway.vpstv.net/streams/709089.m3u8
 CCTV16,https://zby.130519.xyz/PLTV/11/224/3221226120/index.m3u8
 CCTV16 (1080p),http://74.91.26.218:82/live/cctv16hd.m3u8
+CCTV16 4K,https://piccpndks.v.kcdnvip.com/audio/cctv16_2/index.m3u8
 CCTV16奥林匹克,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221227002/1.m3u8?
 CCTV17,http://38.75.136.137:98/gslb/dsdqpub/cctv17hd.m3u8?auth=testpub
 CCTV17,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv17hd
@@ -83,10 +84,10 @@ CCTV4,http://38.75.136.137:98/gslb/dsdqpub/cctv4k.m3u8?auth=testpub
 CCTV4,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4hd
 CCTV4,http://74.91.26.218:82/live/cctv4hd.m3u8
 CCTV4,https://dash2.antik.sk/live/test_cctv_tizen/playlist.m3u8
-CCTV4K 高清,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1785934800-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-7d994c28912df3fcba6b2d9a0cec3869&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+CCTV4K 高清,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1786021200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-af56ef65fa227c58273f906aec1e8782&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 CCTV4K (1080p),http://198.204.240.250:82/live/cctv4k.m3u8
 CCTV4中文国际,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226335/1.m3u8?
-CCTV4 中文国际,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1785934800-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-05cd962aa412d8f169945ce2082a60e5&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+CCTV4 中文国际,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1786021200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-7b5e12d9ad1210b6d3a3ddbea08d1c30&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 CCTV5,http://198.204.228.26/live/cctv5hd.m3u8
 CCTV5,http://198.204.228.26/live/cctv5p.m3u8
 CCTV5,http://207.56.13.146:81/cdnlive/cctv5.m3u8
@@ -102,12 +103,14 @@ CCTV5+,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/
 CCTV5+,http://[2409:8087:1a0a:df::404b]/ottrrs.hl.chinamobile.com/TVOD/88888888/224/3221225603/index.m3u8
 CCTV5+,https://smart.pendy.dpdns.org/Smart.php?id=cctv5plus
 CCTV5+,https://www.freetv.top/migu/641886773.m3u8?migutoken=03a1b82e35e58cd89a95034ecb29e77e50493397000ec2b1e4d1ce59af01e6420d6dbc068c8230ec03be3a35a20eed8714e0959e3570a08713a7a2e8d86085eabf8f1aa85744c80c38343988b2
+CCTV5+,https://myip.pdtvhd.com/Sports/streams/CCTV5pul.m3u8
 CCTV5+体育赛事,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226894/1.m3u8?
 CCTV5体育,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226469/1.m3u8?
 CCTV6,http://198.204.228.26/live/cctv6hd.m3u8
 CCTV6,http://198.204.240.250:82/live/cctv6.m3u8
 CCTV6,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv6hd
 CCTV6,http://74.91.26.218:82/live/cctv6hd.m3u8
+CCTV6,https://live.eac-news.com/CCTV/streams/cctv6.m3u8
 CCTV6 (1080p),http://69.30.245.50/live/cctv6.m3u8
 CCTV6电影,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226468/1.m3u8?
 CCTV7,http://38.75.136.137:98/gslb/dsdqbv/cctv7hd.m3u8?auth=test20251009
@@ -131,7 +134,7 @@ CCTV9,http://69.30.245.50/live/cctv9.m3u8
 CCTV9,http://74.91.26.218:82/live/cctv9hd.m3u8
 CCTV9 (576i),https://xykt-fix.github.io/Y77.m3u8
 CCTV9纪录,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226944/1.m3u8?
-CCTV9 纪录,https://v4-702cae17a28d6e4f0c0002bba021d934.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=944de83d115c5767ee6f1505ccf76f9d
+CCTV9 纪录,https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=ac5375f28ac4c0052fa5c14b080e62e0
 CCTVBilliards (1080p),http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 CCTVCulture of Quality (1080p),http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub
 CCTVGolf & Tennis (1080p),http://38.75.136.137:98/gslb/dsdqpub/gefwq.m3u8?auth=testpub
@@ -287,6 +290,7 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 四川卫视,https://live.264788.xyz/channel/sichuanweishi4k?streamid=21be5901ee81559c827dc84e46f26452&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 四川卫视,https://live.264788.xyz/channel/sichuanweishi4k?streamid=401bf692a1a8b91298f26077d53316d6&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 四川卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226995/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EBQiz3wrGrpG0CUSRIJ-7Jg%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
+四川卫视,https://piccpndks.v.kcdnvip.com/audio/sichuan_2/index.m3u8
 四川卫视 (576p),http://39.134.115.163:8080/PLTV/88888910/224/3221225733/index.m3u8
 大湾区卫视,http://goo.bkpcp.top/mg/dwqws
 大湾区卫视,https://migu.188766.xyz/?migutoken=7924174c7d55ccad4a2cf21add185dad&id=%E5%A4%A7%E6%B9%BE%E5%8C%BA%E5%8D%AB%E8%A7%86&type=yy
@@ -319,7 +323,6 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 安徽卫视,http://iptv.huuc.edu.cn/hls/ahhd.m3u8
 安徽卫视,https://zby.130519.xyz/PLTV/11/224/3221225739/index.m3u8
 安徽卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226943/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E0QmKQ_slRCwvVVUUfxPVbw%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
-安徽卫视,https://piccpndks.v.kcdnvip.com/audio/anhui_2/index.m3u8
 山东卫视,http://107.150.60.122/live/sdwshd.m3u8
 山东卫视,http://192.151.150.154/live/sdwshd.m3u8
 山东卫视,http://207.56.13.146:81/cdnlive/sdws.m3u8
@@ -351,6 +354,7 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 广西卫视,https://hlscdn.liangtv.cn/live/de0f97348eb84f62aa6b7d8cf0430770/dd505d87880c478f901f38560ca4d4e6.m3u8
 广西卫视,https://zby.130519.xyz/PLTV/11/224/3221226084/index.m3u8
 广西卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221227010/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EkAhb-89sxdm9fz6-heXCuw%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
+广西卫视,https://piccpndks.v.kcdnvip.com/audio/guangxi_2/index.m3u8
 广西卫视 (576p),http://118.81.195.79:9003/hls/27/index.m3u8
 康巴卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221227027/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EkHMvBpWz4rccMxNvSRekpQ%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
 康巴卫视 (720p),http://scgctvshow.sctv.com/hdlive/kangba/1.m3u8
@@ -385,7 +389,7 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 江西卫视,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwshd
 江西卫视,https://live.264788.xyz/channel/jiangxiweishi?streamid=555198f31caa33506ac6abb70d788959&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 江西卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226956/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7Ei6ZIpVizXlewg-YfGvH8dA%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
-江西卫视,https://play-live-jsp.jxtvcn.com.cn/live-city/tv_jian.m3u8?t=1785321175&token=0944fb3c-2f04-46fb-a451-c706dedc9301&d=c5abfc3cbbf849d6937b3f37a8ded980
+江西卫视,https://jsp-tv-live.jxtvcn.com.cn/live-jsp/tv_jxtv3_hd.m3u8?t=1785926263&token=c75c90bb-3f4b-463e-80ef-93eff6bcb125&d=45ad54d4378e4af081487e8de3a26c0f
 江西卫视 (1080p),http://39.134.115.163:8080/PLTV/88888910/224/3221225705/index.m3u8
 河北卫视,http://173.208.212.130:8181/720p/hews.m3u8
 河北卫视,http://204.12.221.218:8181/3m1080p/hews.m3u8
@@ -471,7 +475,7 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 重庆卫视,http://60.10.139.113:8801/hls/31/index.m3u8
 重庆卫视,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd
 重庆卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226963/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EjTXsJprEx2nE38tdvu5lhA%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
-重庆卫视,http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202608050613/app_2/_definst_/ls_2.stream/chunklist.m3u8
+重庆卫视,http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202608060607/app_2/_definst_/ls_2.stream/chunklist.m3u8
 重庆卫视 (1080p),http://118.81.195.79:9003/hls/22/index.m3u8
 陕西卫视,http://192.151.150.154/live/snwshd.m3u8
 陕西卫视,http://198.204.228.26/live/snwshd.m3u8
@@ -1828,6 +1832,7 @@ Taiwan Indigenous TV (720p),https://streamipcfapp.akamaized.net/live/_definst_/l
 ABN China (720p),https://mediaserver.abnvideos.com/streams/abnchina.m3u8
 Ando TV (1080p),http://play.kankanlive.com/live/1711956137852982.m3u8
 Angel TV Chinese (720p),https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8
+Anhui TV,https://restream.pdtvhd.com/memfs/c1cd2ed0-3b2b-4c25-af98-a7fb0b1eb130.m3u8
 Anshun Comprehensive News Channel,https://hplayer1.juyun.tv/camera/154379194.m3u8
 Bread TV面包台 (720p),https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
 BRTV Kaku Childrens Channel,http://223.111.191.105/downflv.brtvcloud.com/kkkkasd/winfr.m3u8

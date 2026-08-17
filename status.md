@@ -1,6 +1,6 @@
 # IPTV 更新状态
 
-生成时间：`2026-08-16T21:45:35.869815+00:00`
+生成时间：`2026-08-17T21:51:06.404171+00:00`
 
 仓库：`ttbly/mytvlist`
 
@@ -74,7 +74,7 @@
 | ✅ | `iptv-org-tw` | 25 | `` |
 | ✅ | `fanmingming-ipv6` | 82 | `` |
 | ✅ | `YanG-1989-Gather` | 27 | `` |
-| ✅ | `hujingguang-ChinaIPTV` | 71 | `` |
+| ✅ | `hujingguang-ChinaIPTV` | 70 | `` |
 | ⚠️ | `frankwuzp-iptv-cn` | 0 | `404 Client Error: Not Found for url: https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/iptv.m3u` |
 | ✅ | `Guovin-iptv-api-result-m3u` | 1659 | `` |
 | ✅ | `Guovin-iptv-api-result-txt` | 1659 | `` |

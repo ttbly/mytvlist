@@ -55,6 +55,8 @@ http://[2409:8087:7004:20:1000::22]:6610/yinhe/2/ch00000090990000001309/index.m3
 http://[2409:8087:1a0a:df::4031]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225783/index.m3u8
 #EXTINF:-1 tvg-name="CETV-4" group-title="中央台",CETV-4
 http://[2409:8087:1a0b:df::4020]:80/ottrrs.hl.chinamobile.com/TVOD/88888888/224/3221225783/index.m3u8
+#EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
+http://[2409:8087:1a01:df::4030]:80/TVOD/88888888/224/3221225972/main.m3u8
 #EXTINF:-1 tvg-name="新疆卫视" group-title="卫视",新疆卫视
 http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226460/index.m3u8
 #EXTINF:-1 tvg-name="新疆卫视" group-title="卫视",新疆卫视

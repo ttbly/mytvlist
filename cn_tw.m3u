@@ -168,13 +168,13 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv4k.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTV4" group-title="中央台",CCTV4
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4hd
 #EXTINF:-1 tvg-name="CCTV4K 高清" group-title="中央台",CCTV4K 高清
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1787227200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-66c7c09651f1fe13f5a6edb2e4ab9668&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1787313600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-bbbe7e01d178ca346c7c82fb2f457812&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV4K (1080p)" group-title="中央台",CCTV4K (1080p)
 http://198.204.240.250:82/live/cctv4k.m3u8
 #EXTINF:-1 tvg-name="CCTV4дёӯж–ҮеӣҪйҷ…" group-title="中央台",CCTV4дёӯж–ҮеӣҪйҷ…
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226335/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV4 中文国际" group-title="中央台",CCTV4 中文国际
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1787227200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-7ca96207766cc04dd50a7f5e561b1000&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1787313600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-b35d93778f655e5d68abae06f4e498b1&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
 http://198.204.228.26/live/cctv5hd.m3u8
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
@@ -270,7 +270,7 @@ https://xykt-fix.github.io/Y77.m3u8
 #EXTINF:-1 tvg-name="CCTV9зәӘеҪ•" group-title="中央台",CCTV9зәӘеҪ•
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226944/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV9 纪录" group-title="中央台",CCTV9 纪录
-https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=da7dd19600fe965405405833b793c058
+https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=f3200126ac85405d20293ee8656596ce
 #EXTINF:-1 tvg-name="CCTVBilliards (1080p)" group-title="中央台",CCTVBilliards (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTVCulture of Quality (1080p)" group-title="中央台",CCTVCulture of Quality (1080p)
@@ -552,11 +552,11 @@ http://38.75.136.137:98/gslb/dsdqpub/tjwshd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=tjwshd
 #EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
+http://[2409:8087:1a01:df::4030]:80/TVOD/88888888/224/3221225972/main.m3u8
+#EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
 http://iptv.huuc.edu.cn/hls/tjhd.m3u8
 #EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
 https://zby.130519.xyz/PLTV/11/224/3221225742/index.m3u8
-#EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
-https://piccpndks.v.kcdnvip.com/audio/tianjin_2/index.m3u8
 #EXTINF:-1 tvg-name="天津卫视 (1080p)" group-title="卫视",天津卫视 (1080p)
 http://39.134.115.163:8080/PLTV/88888910/224/3221225698/index.m3u8
 #EXTINF:-1 tvg-name="宁夏卫视" group-title="卫视",宁夏卫视
@@ -641,6 +641,8 @@ http://38.75.136.137:98/gslb/dsdqpub/gxwshd.m3u8?auth=testpub
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwshd
 #EXTINF:-1 tvg-name="广西卫视" group-title="卫视",广西卫视
 https://zby.130519.xyz/PLTV/11/224/3221226084/index.m3u8
+#EXTINF:-1 tvg-name="广西卫视" group-title="卫视",广西卫视
+https://piccpndks.v.kcdnvip.com/audio/guangxi_2/index.m3u8
 #EXTINF:-1 tvg-name="康巴卫视 (720p)" group-title="卫视",康巴卫视 (720p)
 http://scgctvshow.sctv.com/hdlive/kangba/1.m3u8
 #EXTINF:-1 tvg-name="延边卫视" group-title="卫视",延边卫视
@@ -826,7 +828,7 @@ http://38.75.136.137:98/gslb/dsdqpub/cqwshd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
-http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202608200506/app_2/_definst_/ls_2.stream/chunklist.m3u8
+http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202608210509/app_2/_definst_/ls_2.stream/chunklist.m3u8
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
 http://107.150.60.122/live/snwshd.m3u8
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视

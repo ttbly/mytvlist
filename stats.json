@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-22T21:47:18.288866+00:00",
+  "generated_at": "2026-08-23T21:46:47.316305+00:00",
   "repo": "ttbly/mytvlist",
-  "total": 1881,
-  "ipv4_or_non_ipv6": 1772,
+  "total": 1883,
+  "ipv4_or_non_ipv6": 1774,
   "ipv6": 109,
   "check_streams": false,
   "max_same_channel_urls": 8,
@@ -76,14 +76,14 @@
     "青海频道": 9,
     "宁夏频道": 1,
     "新疆频道": 4,
-    "地方及其他": 275
+    "地方及其他": 277
   },
   "sources": {
     "Guovin-iptv-api-result-m3u": 1537,
     "YanG-1989-Gather": 27,
     "fanmingming-ipv6": 82,
     "hujingguang-ChinaIPTV": 49,
-    "iptv-org-cn": 141,
+    "iptv-org-cn": 143,
     "iptv-org-hk": 13,
     "iptv-org-mo": 7,
     "iptv-org-tw": 25
@@ -92,7 +92,7 @@
     {
       "name": "iptv-org-cn",
       "ok": true,
-      "count": 141,
+      "count": 143,
       "error": ""
     },
     {
@@ -128,7 +128,7 @@
     {
       "name": "hujingguang-ChinaIPTV",
       "ok": true,
-      "count": 69,
+      "count": 67,
       "error": ""
     },
     {

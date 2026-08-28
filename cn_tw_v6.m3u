@@ -24,6 +24,8 @@ http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221
 #EXTINF:-1 tvg-name="CCTV4дёӯж–ҮеӣҪйҷ…" group-title="中央台",CCTV4дёӯж–ҮеӣҪйҷ…
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226335/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV5+" group-title="中央台",CCTV5+
+http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225603/index.m3u8
+#EXTINF:-1 tvg-name="CCTV5+" group-title="中央台",CCTV5+
 http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221225603/index.m3u8
 #EXTINF:-1 tvg-name="CCTV5+дҪ“иӮІиөӣдәӢ" group-title="中央台",CCTV5+дҪ“иӮІиөӣдәӢ
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226894/1.m3u8?
@@ -37,8 +39,16 @@ http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226485/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV9зәӘеҪ•" group-title="中央台",CCTV9зәӘеҪ•
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226944/1.m3u8?
+#EXTINF:-1 tvg-name="CETV-2" group-title="中央台",CETV-2
+http://[2409:8087:1:20:20::2c]/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226537/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7E7AxXs4eTU2oiWrhopr9sHw%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNNxsM0Bor098BJglrhfEQTl%2CEND
+#EXTINF:-1 tvg-name="CETV-2" group-title="中央台",CETV-2
+http://[2409:8087:1a0b:df::4013]:80/ottrrs.hl.chinamobile.com/TVOD/88888888/224/3221226425/index.m3u8
 #EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
 http://[2409:8087:1a01:df::4030]:80/TVOD/88888888/224/3221225972/main.m3u8
+#EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
+http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226459/index.m3u8
+#EXTINF:-1 tvg-name="天津卫视" group-title="卫视",天津卫视
+http://[2409:8087:1a0a:df::404b]/ottrrs.hl.chinamobile.com/TVOD/88888888/224/3221226459/index.m3u8
 #EXTINF:-1 tvg-name="新疆卫视" group-title="卫视",新疆卫视
 http://[2409:8087:1a0a:df::404b]/ottrrs.hl.chinamobile.com/TVOD/88888888/224/3221225635/index.m3u8
 #EXTINF:-1 tvg-name="新疆卫视" group-title="卫视",新疆卫视
@@ -47,8 +57,14 @@ http://[2409:8087:2001:20:2800:0:df6e:eb0b]/wh7f454c46tw993550557_162751766/ott.
 http://[2409:8087:1a15:10d1::33]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225654/index.m3u8
 #EXTINF:-1 tvg-name="北京卡酷少儿" group-title="北京频道",北京卡酷少儿
 http://[2409:8087:5e08:25::16]:6610/200000001898/460000089800010081/1.m3u8
+#EXTINF:-1 tvg-name="北京新闻" group-title="北京频道",北京新闻
+http://[2409:8087:1:20:20::2a]/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226437/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EncK5uEAdYwWMsf8WJWI1mQ%7E_eNUbgU9sJGUcVVduOMKhafLvQUgE_zlz_7pvDimJNO_LSIQh_h2P54Cz-MqgJqC%2CEND
 #EXTINF:-1 tvg-name="哈哈炫动" group-title="上海频道",哈哈炫动
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226931/1.m3u8
+#EXTINF:-1 tvg-name="欢笑剧场" group-title="上海频道",欢笑剧场
+http://[2409:8087:5e00:24::1e]:6060/000000001000/5000000002000009455/1.m3u8
+#EXTINF:-1 tvg-name="法治天地" group-title="上海频道",法治天地
+http://[2409:8087:5e01:24::16]:6610/000000001000/2000000002000000014/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000014&IASHttpSessionId=OTT19019320240419154124000281
 #EXTINF:-1 tvg-name="鹤岗新闻综合" group-title="黑龙江频道",鹤岗新闻综合
 http://[2409:8087:1a01:df::4059]:80/TVOD/88888888/224/3221226073/main.m3u8
 #EXTINF:-1 tvg-name="鹤岗新闻综合" group-title="黑龙江频道",鹤岗新闻综合

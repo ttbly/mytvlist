@@ -144,11 +144,11 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv4k.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTV4" group-title="中央台",CCTV4
 http://74.91.26.218:82/live/cctv4hd.m3u8
 #EXTINF:-1 tvg-name="CCTV4K 高清" group-title="中央台",CCTV4K 高清
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1788616800-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-9373a508a798a282329f90298b84e2bc&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1788703200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-b9936c05838302d81b5be891a4396229&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV4K (1080p)" group-title="中央台",CCTV4K (1080p)
 http://198.204.240.250:82/live/cctv4k.m3u8
 #EXTINF:-1 tvg-name="CCTV4 中文国际" group-title="中央台",CCTV4 中文国际
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1788616800-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-c9f3f4dc1df9216f93c35c4e275777ec&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1788703200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-26bcd454c21077cb1b03cf236b427ce2&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
 http://107.150.60.122/live/cctv5hd.m3u8
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
@@ -226,7 +226,7 @@ http://74.91.26.218:82/live/cctv9hd.m3u8
 #EXTINF:-1 tvg-name="CCTV9 (576i)" group-title="中央台",CCTV9 (576i)
 https://xykt-fix.github.io/Y77.m3u8
 #EXTINF:-1 tvg-name="CCTV9 纪录" group-title="中央台",CCTV9 纪录
-https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=bf720d076cfcc3e8ea6ba11e4c0eb940
+https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=26c42ba37b34a8fd5bcb24d5e1a54ea3
 #EXTINF:-1 tvg-name="CCTVBilliards (1080p)" group-title="中央台",CCTVBilliards (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTVCulture of Quality (1080p)" group-title="中央台",CCTVCulture of Quality (1080p)
@@ -385,6 +385,8 @@ http://104.152.209.49:8181/720p/gefwq.m3u8
 http://207.56.13.146:81/cdnlive/gefwq.m3u8
 #EXTINF:-1 tvg-name="高尔夫网球" group-title="中央台",高尔夫网球
 https://hls-gateway.vpstv.net/streams/708857.m3u8
+#EXTINF:-1 tvg-name="BRTV 北京卫视" group-title="卫视",BRTV 北京卫视
+http://ivi.bupt.edu.cn/hls/btv1.m3u8
 #EXTINF:-1 tvg-name="BRTV 北京卫视 (1080p)" group-title="卫视",BRTV 北京卫视 (1080p)
 http://go.bkpcp.top/mg/bjws
 #EXTINF:-1 tvg-name="三沙卫视" group-title="卫视",三沙卫视
@@ -438,6 +440,8 @@ http://107.150.60.122/live/nmgws.m3u8
 #EXTINF:-1 tvg-name="内蒙古卫视" group-title="卫视",内蒙古卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=nmgws
 #EXTINF:-1 tvg-name="内蒙古卫视" group-title="卫视",内蒙古卫视
+http://play1-qk.nmtv.cn/live/1769652018126032.m3u8
+#EXTINF:-1 tvg-name="内蒙古卫视" group-title="卫视",内蒙古卫视
 https://live.264788.xyz/channel/neimengguweishi?streamid=3e7340acf8869ac1c7dad1bb836dcd35&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="内蒙古卫视" group-title="卫视",内蒙古卫视
 https://live.264788.xyz/channel/neimengguweishi?streamid=81a015dbecf3031d7d847b7a9b059f67&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
@@ -451,8 +455,6 @@ http://120.76.248.139/live/bfgd/4200000083.m3u8
 http://38.75.136.137:98/gslb/dsdqbv/bjwshd.m3u8?auth=test20251009
 #EXTINF:-1 tvg-name="北京卫视" group-title="卫视",北京卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=bjwshd
-#EXTINF:-1 tvg-name="北京衛視 (1080p)" group-title="卫视",北京衛視 (1080p)
-http://14.152.88.77/liveplay-kk.rtxapp.com/live/program/live/bjwshd/4000000/mnf.m3u8
 #EXTINF:-1 tvg-name="厦门卫视" group-title="卫视",厦门卫视
 http://107.150.60.122/live/xmws.m3u8
 #EXTINF:-1 tvg-name="厦门卫视" group-title="卫视",厦门卫视
@@ -581,8 +583,8 @@ http://198.204.228.26/live/gxwshd.m3u8
 http://38.75.136.137:98/gslb/dsdqpub/gxwshd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="广西卫视" group-title="卫视",广西卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gxwshd
-#EXTINF:-1 tvg-name="康巴卫视 (720p)" group-title="卫视",康巴卫视 (720p)
-http://scgctvshow.sctv.com/hdlive/kangba/1.m3u8
+#EXTINF:-1 tvg-name="康巴卫视 (576p)" group-title="卫视",康巴卫视 (576p)
+http://223.110.245.139/PLTV/4/224/3221227008/index.m3u8
 #EXTINF:-1 tvg-name="延边卫视" group-title="卫视",延边卫视
 https://srs.iyb983.cn/video/CYS/index.m3u8
 #EXTINF:-1 tvg-name="延边卫视" group-title="卫视",延边卫视
@@ -774,7 +776,7 @@ http://iptv.huuc.edu.cn/hls/cqhd.m3u8
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
 https://zby.130519.xyz/PLTV/11/224/3221226171/index.m3u8
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
-http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202609050706/app_2/_definst_/ls_2.stream/chunklist.m3u8
+http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202609060706/app_2/_definst_/ls_2.stream/chunklist.m3u8
 #EXTINF:-1 tvg-name="陕西农林卫视" group-title="卫视",陕西农林卫视
 https://live.chinacert.cftest5.cn/cnmg/live/956904896
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
@@ -3023,8 +3025,8 @@ http://live2.rxip.sc96655.com/live/zxs_4000.m3u8?A=&E=&K=&P=&S=&U=
 https://hls-gateway.vpstv.net/streams/476247.m3u8
 #EXTINF:-1 tvg-name="CN卡通" group-title="地方及其他",CN卡通
 https://stream1.freetv.fun/cnqia-tong-3.ctv
-#EXTINF:-1 tvg-name="Dragon TV International (480p)" group-title="地方及其他",Dragon TV International (480p)
-https://op-group1-swiftservesd-1.dens.tv/s/s29/index.m3u8
+#EXTINF:-1 tvg-name="Dragon TV International" group-title="地方及其他",Dragon TV International
+https://restream.pdtvhd.com/memfs/0b1b95c9-3543-4af9-9fdb-cf45f1602f17.m3u8
 #EXTINF:-1 tvg-name="Fujian Comprehensive Channel" group-title="地方及其他",Fujian Comprehensive Channel
 http://120.39.52.202:5140/%E7%A6%8F%E5%BB%BA%E7%BB%BC%E5%90%88
 #EXTINF:-1 tvg-name="Guangdong Satellite TV" group-title="地方及其他",Guangdong Satellite TV
@@ -3075,10 +3077,10 @@ https://liveplus.lzr.com.cn/wlpd/HD/live.m3u8
 http://118.122.2.29:9999/hls/47/index.m3u8
 #EXTINF:-1 tvg-name="Nanchang News & Generalist Channel" group-title="地方及其他",Nanchang News & Generalist Channel
 https://play-live-hls.jxtvcn.com.cn/live-city/tv_nanchang.m3u8
-#EXTINF:-1 tvg-name="Nei Monggol TV (1080i)" group-title="地方及其他",Nei Monggol TV (1080i)
-http://play1-qk.nmtv.cn/live/1769652018126032.m3u8
-#EXTINF:-1 tvg-name="Nei Monggol TV 2 Mongolian Culture Channel (1080i)" group-title="地方及其他",Nei Monggol TV 2 Mongolian Culture Channel (1080i)
-http://play1-qk.nmtv.cn/live/1769652109096027.m3u8
+#EXTINF:-1 tvg-name="Nei Monggol TV (960p)" group-title="地方及其他",Nei Monggol TV (960p)
+https://cdn4.skygo.mn/live/disk1/NeigMGL/HLSv3-FTA/NeigMGL.m3u8
+#EXTINF:-1 tvg-name="Nei Monggol TV 2 Mongolian Culture Channel" group-title="地方及其他",Nei Monggol TV 2 Mongolian Culture Channel
+http://1.24.190.98:10080/hls/40/index.m3u8
 #EXTINF:-1 tvg-name="NewTV动作电影" group-title="地方及其他",NewTV动作电影
 http://ott.mobaibox.com/PLTV/3/224/3221227606/index.m3u8
 #EXTINF:-1 tvg-name="NewTV动作电影" group-title="地方及其他",NewTV动作电影

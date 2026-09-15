@@ -1,6 +1,6 @@
 # IPTV 更新状态
 
-生成时间：`2026-09-14T23:56:52.360023+00:00`
+生成时间：`2026-09-15T23:35:45.830193+00:00`
 
 仓库：`ttbly/mytvlist`
 
@@ -8,8 +8,8 @@
 
 | 项目 | 数量 |
 |---|---:|
-| 全部频道源 | 1825 |
-| IPv4/非 IPv6 | 1720 |
+| 全部频道源 | 1826 |
+| IPv4/非 IPv6 | 1721 |
 | IPv6 | 105 |
 | 同一频道最多保留线路数 | 8 |
 
@@ -31,7 +31,7 @@
 |---|---:|
 | 中央台 | 216 |
 | 卫视 | 216 |
-| 港澳频道 | 97 |
+| 港澳频道 | 98 |
 | 台湾频道 | 48 |
 | 北京频道 | 19 |
 | 天津频道 | 3 |
@@ -68,12 +68,12 @@
 | 状态 | 来源 | 解析数量 | 错误 |
 |---|---|---:|---|
 | ✅ | `iptv-org-cn` | 144 | `` |
-| ✅ | `iptv-org-hk` | 17 | `` |
+| ✅ | `iptv-org-hk` | 18 | `` |
 | ✅ | `iptv-org-mo` | 7 | `` |
 | ✅ | `iptv-org-tw` | 26 | `` |
 | ✅ | `fanmingming-ipv6` | 82 | `` |
 | ✅ | `YanG-1989-Gather` | 27 | `` |
-| ✅ | `hujingguang-ChinaIPTV` | 67 | `` |
+| ✅ | `hujingguang-ChinaIPTV` | 66 | `` |
 | ⚠️ | `frankwuzp-iptv-cn` | 0 | `404 Client Error: Not Found for url: https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/iptv.m3u` |
 | ✅ | `Guovin-iptv-api-result-m3u` | 1596 | `` |
 | ✅ | `Guovin-iptv-api-result-txt` | 1596 | `` |

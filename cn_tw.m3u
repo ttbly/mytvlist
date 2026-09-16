@@ -166,13 +166,13 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv4k.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTV4" group-title="中央台",CCTV4
 http://74.91.26.218:82/live/cctv4hd.m3u8
 #EXTINF:-1 tvg-name="CCTV4K 高清" group-title="中央台",CCTV4K 高清
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1789567200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-31fdb300af4b9fac5b811693f08cb782&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1789653600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-685234555e1491e4286922eb22238598&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV4K (1080p)" group-title="中央台",CCTV4K (1080p)
 http://198.204.240.250:82/live/cctv4k.m3u8
 #EXTINF:-1 tvg-name="CCTV4дёӯж–ҮеӣҪйҷ…" group-title="中央台",CCTV4дёӯж–ҮеӣҪйҷ…
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226335/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV4 中文国际" group-title="中央台",CCTV4 中文国际
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1789567200-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-7e286bf658b737c1f01ea30c854d5fed&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1789653600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-7438d6a2dbc5273fe8691c013d6f20b3&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
 http://107.150.60.122/live/cctv5hd.m3u8
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
@@ -223,8 +223,6 @@ https://live.eac-news.com/CCTV/streams/cctv6.m3u8
 http://69.30.245.50/live/cctv6.m3u8
 #EXTINF:-1 tvg-name="CCTV6з”өеҪұ" group-title="中央台",CCTV6з”өеҪұ
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226468/1.m3u8?
-#EXTINF:-1 tvg-name="CCTV6 电影频道" group-title="中央台",CCTV6 电影频道
-https://piccpndks.v.kcdnvip.com/audio/cctv6_2/index.m3u8
 #EXTINF:-1 tvg-name="CCTV7" group-title="中央台",CCTV7
 http://107.150.60.122/live/cctv7hd.m3u8
 #EXTINF:-1 tvg-name="CCTV7" group-title="中央台",CCTV7
@@ -268,7 +266,7 @@ https://xykt-fix.github.io/Y77.m3u8
 #EXTINF:-1 tvg-name="CCTV9зәӘеҪ•" group-title="中央台",CCTV9зәӘеҪ•
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226944/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV9 纪录" group-title="中央台",CCTV9 纪录
-https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=3af83bf8cd07fea09886127549d091a2
+https://v4-702cae17a28d6e4f0c0002bba021d934.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=57412f6cc0deaab2eca8a9482db6b952
 #EXTINF:-1 tvg-name="CCTVBilliards (1080p)" group-title="中央台",CCTVBilliards (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTVCulture of Quality (1080p)" group-title="中央台",CCTVCulture of Quality (1080p)
@@ -529,6 +527,8 @@ http://63.141.230.178:82/gslb/zbdq5.m3u8?id=scwshd
 https://live.264788.xyz/channel/sichuanweishi4k?streamid=21be5901ee81559c827dc84e46f26452&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="四川卫视" group-title="卫视",四川卫视
 https://live.264788.xyz/channel/sichuanweishi4k?streamid=401bf692a1a8b91298f26077d53316d6&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
+#EXTINF:-1 tvg-name="四川卫视" group-title="卫视",四川卫视
+https://piccpndks.v.kcdnvip.com/audio/sichuan_2/index.m3u8
 #EXTINF:-1 tvg-name="四川卫视 (576p)" group-title="卫视",四川卫视 (576p)
 http://39.134.115.163:8080/PLTV/88888910/224/3221225733/index.m3u8
 #EXTINF:-1 tvg-name="大湾区卫视" group-title="卫视",大湾区卫视
@@ -612,7 +612,7 @@ https://live.264788.xyz/channel/shanxiweishi?streamid=69e002ac7467d661ff7ad0671e
 #EXTINF:-1 tvg-name="山西卫视" group-title="卫视",山西卫视
 https://live.264788.xyz/channel/shanxiweishi?streamid=eeb7d60ca6e0db131ea7a092a3cd28d2&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="山西卫视" group-title="卫视",山西卫视
-https://livehhhttps.sxrtv.com/lsdream/4j01KWX/800/g81dj40.m3u8
+https://livehhhttps.sxrtv.com/lsdream/Y00Xezi/800/549g0sX.m3u8
 #EXTINF:-1 tvg-name="广东卫视" group-title="卫视",广东卫视
 http://107.150.60.122/live/gdwshd.m3u8
 #EXTINF:-1 tvg-name="广东卫视" group-title="卫视",广东卫视
@@ -689,6 +689,8 @@ http://38.75.136.137:98/gslb/dsdqpub/jxwshd.m3u8?auth=testpub
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=jxwshd
 #EXTINF:-1 tvg-name="江西卫视" group-title="卫视",江西卫视
 https://live.264788.xyz/channel/jiangxiweishi?streamid=555198f31caa33506ac6abb70d788959&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
+#EXTINF:-1 tvg-name="江西卫视" group-title="卫视",江西卫视
+https://jsp-tv-live.jxtvcn.com.cn/live-jsp/tv_jxtv1.m3u8?t=1789574525&token=5115d73b-b403-49e5-a2e7-0940535e19ae&d=9601f1ac61e848f18dea1dc0fc027d0d
 #EXTINF:-1 tvg-name="江西卫视 (1080p)" group-title="卫视",江西卫视 (1080p)
 http://39.134.115.163:8080/PLTV/88888910/224/3221225705/index.m3u8
 #EXTINF:-1 tvg-name="河北卫视" group-title="卫视",河北卫视
@@ -700,7 +702,7 @@ http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="河北卫视" group-title="卫视",河北卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewshd
 #EXTINF:-1 tvg-name="河北卫视" group-title="卫视",河北卫视
-https://tv.pull.hebtv.com/jishi/nongminpindao.m3u8?t=1788975627&k=248feea9156be798e7e6963e747c3a0c
+https://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=1789581022&k=ac76970aef7264626b34e0c5e3160f58
 #EXTINF:-1 tvg-name="河南卫视" group-title="卫视",河南卫视
 http://107.150.60.122/live/hawshd.m3u8
 #EXTINF:-1 tvg-name="河南卫视" group-title="卫视",河南卫视
@@ -712,7 +714,7 @@ http://38.75.136.137:98/gslb/dsdqpub/hawshd.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="河南卫视" group-title="卫视",河南卫视
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hawshd
 #EXTINF:-1 tvg-name="河南卫视" group-title="卫视",河南卫视
-http://tvcdn.stream3.hndt.com/tv/65bd329b017e1000648cd2ed00000000_transios/playlist.m3u8?wsSecret=6c87f05fbc3ef2fee0c45559deca8586&wsTime=1788985098
+http://tvcdn.stream3.hndt.com/tv/65bef28a017e10009c49d5f900000000_transios/playlist.m3u8?wsSecret=d46cd3eebaff4c5c70d89289e8fb03ad&wsTime=1789538942
 #EXTINF:-1 tvg-name="浙江卫视" group-title="卫视",浙江卫视
 http://107.150.60.122/live/zjwshd.m3u8
 #EXTINF:-1 tvg-name="浙江卫视" group-title="卫视",浙江卫视
@@ -746,9 +748,9 @@ http://63.141.230.178:82/gslb/zbdq5.m3u8?id=szwshd
 #EXTINF:-1 tvg-name="深圳卫视" group-title="卫视",深圳卫视
 http://iptv.huuc.edu.cn/hls/szhd.m3u8
 #EXTINF:-1 tvg-name="深圳卫视" group-title="卫视",深圳卫视
-http://php.jdshipin.com/TVOD/hnyd.php?id=200000001898/460000089800010068
-#EXTINF:-1 tvg-name="深圳卫视" group-title="卫视",深圳卫视
 https://zby.130519.xyz/PLTV/11/224/3221225728/index.m3u8
+#EXTINF:-1 tvg-name="深圳卫视" group-title="卫视",深圳卫视
+https://sztv-hls.sztv.com.cn/AxeFRth/500/547hxgF.m3u8?sign=c8a3d20f8ef0e3cce60abcaa7ace712c&t=6aa33c88
 #EXTINF:-1 tvg-name="湖北卫视" group-title="卫视",湖北卫视
 http://107.150.60.122/live/hbwshd.m3u8
 #EXTINF:-1 tvg-name="湖北卫视" group-title="卫视",湖北卫视
@@ -829,6 +831,8 @@ http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cqwshd
 http://iptv.huuc.edu.cn/hls/cqhd.m3u8
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
 https://zby.130519.xyz/PLTV/11/224/3221226171/index.m3u8
+#EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
+http://yztv-wshls.homecdn.com/8bb.m3u8?t=1789079364&k=10aafa2f8934f7f73dda4d21084cdb64
 #EXTINF:-1 tvg-name="陕西农林卫视" group-title="卫视",陕西农林卫视
 https://live.chinacert.cftest5.cn/cnmg/live/956904896
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
@@ -840,7 +844,7 @@ http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
 https://live.264788.xyz/channel/shaanxiweishi?streamid=9dc887dba8ecb4e4143baf4f2373800c&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
-http://stream.snrtv.com/sxbc-nl-estuBD.m3u8
+http://stream.snrtv.com/sxbc-star-cdqCO3.m3u8
 #EXTINF:-1 tvg-name="青海卫视" group-title="卫视",青海卫视
 http://107.150.60.122/live/qhws.m3u8
 #EXTINF:-1 tvg-name="青海卫视" group-title="卫视",青海卫视
@@ -2657,8 +2661,6 @@ https://stream1.freetv.fun/hu-nan-yu-le-9.ctv
 https://stream1.freetv.fun/hu-nan-jiao-yu-6.ctv
 #EXTINF:-1 tvg-name="湖南爱晚" group-title="湖南频道",湖南爱晚
 http://php.jdshipin.com:8880/iptv.php?id=hngg
-#EXTINF:-1 tvg-name="湖南爱晚" group-title="湖南频道",湖南爱晚
-http://phoneal.qing.mgtv.com/nn_live/nn_x64/Y2hzPSZkZWY9MSZ1aXA9MTA2LjE0LjM4LjU1JnRlcm09NSZtYWNpZD02ODZlOGNmOGM4OGU3N2VjOWEwNzkzMjg5ZjUzNDg0MmFiZWM0ZjNjJnFpZD0mcmF1dGhfZW5hYmxlPW9uJmNkbmV4X2lkPWFsX3Bob25lMyZlcz0xNzg4OTk2OTQzJnV1aWQ9NzE1MDY4MjBiMjVhZDkyNzgwMDVhZWYzZTljODE0MTktNmEwZTI2Mzcmcz0wNGUyYWMxM2ZhMzg4ZmVmOGJlNjA3NzkzNzVhN2U2NiZ1aWQ9Jm5kdj1pb3MtNi41LjAmdj0yJmFzPTAmX2NhckNvZGU9MA,,/KLGMPP360.m3u8
 #EXTINF:-1 tvg-name="湖南电影" group-title="湖南频道",湖南电影
 http://php.jdshipin.com:8880/iptv.php
 #EXTINF:-1 tvg-name="湖南电影" group-title="湖南频道",湖南电影

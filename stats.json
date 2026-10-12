@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T00:20:46.302789+00:00",
+  "generated_at": "2026-10-12T00:41:16.927548+00:00",
   "repo": "ttbly/mytvlist",
   "total": 1826,
   "ipv4_or_non_ipv6": 1723,
@@ -126,7 +126,7 @@
     {
       "name": "hujingguang-ChinaIPTV",
       "ok": true,
-      "count": 68,
+      "count": 67,
       "error": ""
     },
     {

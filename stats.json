@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-15T00:01:25.922602+00:00",
+  "generated_at": "2026-10-15T23:45:16.708488+00:00",
   "repo": "ttbly/mytvlist",
-  "total": 1828,
-  "ipv4_or_non_ipv6": 1725,
+  "total": 1827,
+  "ipv4_or_non_ipv6": 1724,
   "ipv6": 103,
   "check_streams": false,
   "max_same_channel_urls": 8,
@@ -43,9 +43,9 @@
   ],
   "groups": {
     "中央台": 221,
-    "卫视": 233,
+    "卫视": 231,
     "港澳频道": 95,
-    "台湾频道": 49,
+    "台湾频道": 50,
     "北京频道": 19,
     "天津频道": 3,
     "上海频道": 55,
@@ -80,11 +80,11 @@
     "Guovin-iptv-api-result-m3u": 1469,
     "YanG-1989-Gather": 27,
     "fanmingming-ipv6": 82,
-    "hujingguang-ChinaIPTV": 51,
+    "hujingguang-ChinaIPTV": 49,
     "iptv-org-cn": 147,
     "iptv-org-hk": 18,
     "iptv-org-mo": 7,
-    "iptv-org-tw": 27
+    "iptv-org-tw": 28
   },
   "source_status": [
     {
@@ -108,7 +108,7 @@
     {
       "name": "iptv-org-tw",
       "ok": true,
-      "count": 27,
+      "count": 28,
       "error": ""
     },
     {
@@ -126,7 +126,7 @@
     {
       "name": "hujingguang-ChinaIPTV",
       "ok": true,
-      "count": 69,
+      "count": 65,
       "error": ""
     },
     {

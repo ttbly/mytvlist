@@ -111,6 +111,8 @@ https://hls-gateway.vpstv.net/streams/709089.m3u8
 https://zby.130519.xyz/PLTV/11/224/3221226120/index.m3u8
 #EXTINF:-1 tvg-name="CCTV16 HD (1080p)" group-title="中央台",CCTV16 HD (1080p)
 http://74.91.26.218:82/live/cctv16hd.m3u8
+#EXTINF:-1 tvg-name="CCTV16 4K" group-title="中央台",CCTV16 4K
+https://piccpndks.v.kcdnvip.com/audio/cctv16_2/index.m3u8
 #EXTINF:-1 tvg-name="CCTV16奥林匹克" group-title="中央台",CCTV16奥林匹克
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221227002/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV17" group-title="中央台",CCTV17
@@ -166,13 +168,13 @@ http://38.75.136.137:98/gslb/dsdqpub/cctv4k.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTV4" group-title="中央台",CCTV4
 http://74.91.26.218:82/live/cctv4hd.m3u8
 #EXTINF:-1 tvg-name="CCTV4K 高清" group-title="中央台",CCTV4K 高清
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1792677600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-db8cc104c4baef595fbb7018e94b6694&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1792764000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-3b6b297e0ab974483b8bbc1a10ff1f73&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV4K HD (1080p)" group-title="中央台",CCTV4K HD (1080p)
 http://198.204.240.250:82/live/cctv4k.m3u8
 #EXTINF:-1 tvg-name="CCTV4中文国际" group-title="中央台",CCTV4中文国际
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226335/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV4 中文国际" group-title="中央台",CCTV4 中文国际
-https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1792677600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-fbd41f8be44a10e7b01d757132f298e4&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
+https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1792764000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-9b02a6198e3324126b88eeeeae9c6677&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
 http://107.150.60.122/live/cctv5hd.m3u8
 #EXTINF:-1 tvg-name="CCTV5" group-title="中央台",CCTV5
@@ -266,7 +268,7 @@ https://xykt-fix.github.io/Y77.m3u8
 #EXTINF:-1 tvg-name="CCTV9纪录" group-title="中央台",CCTV9纪录
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226944/1.m3u8?
 #EXTINF:-1 tvg-name="CCTV9 纪录" group-title="中央台",CCTV9 纪录
-https://v4-e6b1c5baf4e240fe63adbf68dda23435.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=1d4215a49ef78ea4784e520dc7cd0383
+https://v4-702cae17a28d6e4f0c0002bba021d934.livehwc4.com/play.kankanlive.com/live/1698423397390920.m3u8?sub_m3u8=true&edge_slice=true&user_session_id=41d5c87b1293cd09139379523ab2729e
 #EXTINF:-1 tvg-name="CCTVBilliards (1080p)" group-title="中央台",CCTVBilliards (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="CCTVCulture of Quality SD (1080p)" group-title="中央台",CCTVCulture of Quality SD (1080p)
@@ -727,6 +729,8 @@ http://38.75.136.137:98/gslb/dsdqpub/hewshd.m3u8?auth=testpub
 http://63.141.230.178:82/gslb/zbdq5.m3u8?id=hewshd
 #EXTINF:-1 tvg-name="河北卫视" group-title="卫视",河北卫视
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221227014/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7ErSGjhI3DMaaAASPrbQJYTg%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
+#EXTINF:-1 tvg-name="河北卫视" group-title="卫视",河北卫视
+https://tv.pull.hebtv.com/jishi/nongminpindao.m3u8?t=1792389883&k=25b41d7c2f6d2805c70b59b69e6c23b6
 #EXTINF:-1 tvg-name="河南卫视" group-title="卫视",河南卫视
 http://107.150.60.122/live/hawshd.m3u8
 #EXTINF:-1 tvg-name="河南卫视" group-title="卫视",河南卫视
@@ -869,6 +873,8 @@ http://iptv.huuc.edu.cn/hls/cqhd.m3u8
 https://zby.130519.xyz/PLTV/11/224/3221226171/index.m3u8
 #EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226963/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EjTXsJprEx2nE38tdvu5lhA%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
+#EXTINF:-1 tvg-name="重庆卫视" group-title="卫视",重庆卫视
+http://p2.ioioz.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202610230706/app_2/_definst_/ls_2.stream/chunklist.m3u8
 #EXTINF:-1 tvg-name="陕西农林卫视" group-title="卫视",陕西农林卫视
 https://live.chinacert.cftest5.cn/cnmg/live/956904896
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
@@ -881,6 +887,8 @@ http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd
 https://live.264788.xyz/channel/shaanxiweishi?streamid=9dc887dba8ecb4e4143baf4f2373800c&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
 http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226999/1.m3u8?GuardEncType=2&accountinfo=%7E%7EV2.0%7EsGLKaSqf0wDZMbAjeQtfyw%7EtP4-l0lmSfjwLWEfK_el1vH_mv-s1zo4AQJwdedaVwG9xkuFTDg8J26cwOrNJzn20BErrHdLhuZ9EzLUCD3PMW-OMx4MGteHV2vLeW6BqoY%2CEND
+#EXTINF:-1 tvg-name="陕西卫视" group-title="卫视",陕西卫视
+http://stream.snrtv.com/sxbc-star-fhiwyR.m3u8
 #EXTINF:-1 tvg-name="青海卫视" group-title="卫视",青海卫视
 http://107.150.60.122/live/qhws.m3u8
 #EXTINF:-1 tvg-name="青海卫视" group-title="卫视",青海卫视

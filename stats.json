@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-13T02:01:39.040689+00:00",
+  "generated_at": "2026-11-14T01:37:04.276035+00:00",
   "repo": "ttbly/mytvlist",
   "total": 1851,
-  "ipv4_or_non_ipv6": 1747,
-  "ipv6": 104,
+  "ipv4_or_non_ipv6": 1748,
+  "ipv6": 103,
   "check_streams": false,
   "max_same_channel_urls": 8,
   "group_order": [

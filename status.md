@@ -1,6 +1,6 @@
 # IPTV 更新状态
 
-生成时间：`2026-11-21T02:41:29.439481+00:00`
+生成时间：`2026-11-22T01:29:09.914669+00:00`
 
 仓库：`ttbly/mytvlist`
 
@@ -9,8 +9,8 @@
 | 项目 | 数量 |
 |---|---:|
 | 全部频道源 | 1833 |
-| IPv4/非 IPv6 | 1730 |
-| IPv6 | 103 |
+| IPv4/非 IPv6 | 1729 |
+| IPv6 | 104 |
 | 同一频道最多保留线路数 | 8 |
 
 ## 推荐订阅地址
@@ -73,7 +73,7 @@
 | ✅ | `iptv-org-tw` | 34 | `` |
 | ✅ | `fanmingming-ipv6` | 82 | `` |
 | ✅ | `YanG-1989-Gather` | 27 | `` |
-| ✅ | `hujingguang-ChinaIPTV` | 49 | `` |
+| ✅ | `hujingguang-ChinaIPTV` | 48 | `` |
 | ⚠️ | `frankwuzp-iptv-cn` | 0 | `404 Client Error: Not Found for url: https://raw.githubusercontent.com/frankwuzp/iptv-cn/main/iptv.m3u` |
 | ✅ | `Guovin-iptv-api-result-m3u` | 1596 | `` |
 | ✅ | `Guovin-iptv-api-result-txt` | 1596 | `` |
